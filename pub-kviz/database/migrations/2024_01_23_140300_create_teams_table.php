@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('NazivTima')->nullable(false);
             $table->string('BrojClanova')->nullable(false);
             $table->unique('TimID');
+
+            $table->timestamps();
         });
     }
 

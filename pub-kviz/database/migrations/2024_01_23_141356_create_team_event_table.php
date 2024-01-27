@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('BrojPoena')->nullable(false);
             
             $table->unique('TimDogadjajID');
+            $table->timestamps();
         });
     }
 
