@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Teams;
 use Illuminate\Http\Request;
+use App\Http\Resources\TeamResource;
 
 class TeamController extends Controller
 {
@@ -12,15 +13,16 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        $teams = Teams::all();
+        return $teams;
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+       // $validator = Validator::make($request->all(). )
     }
 
     /**
@@ -34,9 +36,12 @@ class TeamController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Teams $teams)
+    public function show($team_id)
     {
-        //
+        $team = Teams::find($team_id);
+        if(is_null($team))
+            return response()->json('Data not found', 404);
+        return response()->json($team);
     }
 
     /**

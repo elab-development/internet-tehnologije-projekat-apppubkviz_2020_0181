@@ -15,9 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        //Users::factory()->times(10)->create();
+
+
+        //Users::factory()->times(10)->create();       
         //Teams::factory()->times(10)->create();
         //Event::factory()->times(10)->create();
         Team_Event::factory()->times(10)->create();
+        
     }
 }

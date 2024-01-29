@@ -24,7 +24,7 @@ class UsersFactory extends Factory
         return [
             'Ime' => $this->faker->firstName,
             'Prezime' => $this->faker->lastName,
-            'BrojTelefona' => $this->faker->phoneNumber,
+            'Telefon' => $this->faker->phoneNumber,
             'Username' => $this->faker->userName,
             'Password' => bcrypt('password') 
         ];

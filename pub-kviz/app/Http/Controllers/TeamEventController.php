@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Team_Event;
 use Illuminate\Http\Request;
+use App\Http\Resources\TeamEventResource;
 
 class TeamEventController extends Controller
 {
@@ -12,7 +13,8 @@ class TeamEventController extends Controller
      */
     public function index()
     {
-        //
+        $teamEvents = Team_Event::all();
+        return $teamEvents;
     }
 
     /**
@@ -34,9 +36,12 @@ class TeamEventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Team_Event $team_Event)
+    public function show($teamEventID)
     {
-        //
+        $team_event = Team_Event::find($teamEventID);
+        if(is_null($team_event))
+            return response()->json('Data not found', 404);
+        return response()->json($team_event);    
     }
 
     /**

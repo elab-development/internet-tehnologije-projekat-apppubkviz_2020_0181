@@ -21,7 +21,6 @@ class TeamEventResource extends JsonResource
         return [
             'TimDogadjajID' => $this->resource->TimDogadjajID,
             'Naziv' => $this->resource->Naziv,
-            'NazivTima' => $this->resource-NazivTima,
             'BrojPoena' => $this->resource->BrojPoena,
         ];
     }

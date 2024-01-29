@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('Username')->nullable(false);
             $table->string('Password')->nullable(false);
             $table->unique('KorisnikID');
-            $table->timestamps();
+            $table->timestamps(false);
         });
     }
 
