@@ -22,3 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/{id}', [UserController::class, 'show']);
+
+Route::resource('teams', TeamController::class)->only(['index', 'show']);
+Route::resource('events', EventController::class)->only(['index', 'show']);
+
+Route::get('teams_events', [TeamEventController::class, 'index']);
+Route::get('teams_events/{id}', [TeamEventController::class, 'show']);

@@ -23,5 +23,14 @@ class Team_Event extends Model
         'BrojPoena',
     ];
 
+    public function team()
+    {
+        return $this->belongsTo(Teams::class, 'IDTim', 'TimID');
+    }
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class, 'IDDogadjaj', 'DogadjajID');
+    }
     
 }

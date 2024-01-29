@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+
 class TeamEventResource extends JsonResource
 {
     /**
@@ -18,9 +19,11 @@ class TeamEventResource extends JsonResource
     public function toArray(Request $request): array
     {
         //return parent::toArray($request);
+        
         return [
             'TimDogadjajID' => $this->resource->TimDogadjajID,
-            'Naziv' => $this->resource->Naziv,
+            'NazivDogadjaj'=> $this->event->Naziv,
+            'NazivTima' => $this->team->NazivTima,
             'BrojPoena' => $this->resource->BrojPoena,
         ];
     }

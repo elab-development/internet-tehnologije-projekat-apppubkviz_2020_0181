@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Teams;
 use Illuminate\Http\Request;
 use App\Http\Resources\TeamResource;
+use App\Http\Resources\TeamCollection;
 
 class TeamController extends Controller
 {
@@ -14,7 +15,7 @@ class TeamController extends Controller
     public function index()
     {
         $teams = Teams::all();
-        return $teams;
+        return new TeamCollection($teams);
     }
 
     /**
@@ -36,12 +37,9 @@ class TeamController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($team_id)
+    public function show(Teams $team)
     {
-        $team = Teams::find($team_id);
-        if(is_null($team))
-            return response()->json('Data not found', 404);
-        return response()->json($team);
+        return new TeamResource($team);
     }
 
     /**

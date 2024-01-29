@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('BrojClanova')->nullable(false);
             $table->unique('TimID');
 
-            $table->timestamps();
+            $table->timestamps(false);
         });
     }
 

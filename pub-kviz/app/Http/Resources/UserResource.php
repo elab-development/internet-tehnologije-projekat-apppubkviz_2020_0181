@@ -22,7 +22,7 @@ class UserResource extends JsonResource
             'KorisnikID' => $this->resource->KorisnikID,
             'Ime' => $this->resource->Ime,
             'Prezime' => $this->resource->Prezime,
-            'BrojTelefona' => $this->resource->BrojTelefona,
+            'BrojTelefona' => $this->resource->Telefon,
         ];
     }
 }

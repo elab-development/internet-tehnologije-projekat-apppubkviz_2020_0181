@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Team_Event;
 use Illuminate\Http\Request;
 use App\Http\Resources\TeamEventResource;
+use App\Http\Resources\TeamEventCollection;
 
 class TeamEventController extends Controller
 {
@@ -14,7 +15,7 @@ class TeamEventController extends Controller
     public function index()
     {
         $teamEvents = Team_Event::all();
-        return $teamEvents;
+        return new TeamEventCollection($teamEvents);
     }
 
     /**
@@ -38,10 +39,12 @@ class TeamEventController extends Controller
      */
     public function show($teamEventID)
     {
-        $team_event = Team_Event::find($teamEventID);
-        if(is_null($team_event))
-            return response()->json('Data not found', 404);
-        return response()->json($team_event);    
+        $teamEvent = Team_Event::find($teamEventID);
+        if(is_null($teamEvent)){
+            return response()->json('Data not found');
+        }
+
+        return new TeamEventResource($teamEvent);  
     }
 
     /**

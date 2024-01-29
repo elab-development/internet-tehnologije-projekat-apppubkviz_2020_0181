@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Http\Resources\EventResource;
+use App\Http\Resources\EventCollection;
 
 class EventController extends Controller
 {
@@ -14,7 +15,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::all();
-        return $events;
+        return new EventCollection($events);
     }
 
     /**
@@ -36,12 +37,9 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($event_id)
+    public function show(Event $event)
     {
-        $event = Event::find($event_id);
-        if(is_null($event))
-            return response()->json('Data not found', 404);
-        return response()->json($event);
+        return new EventResource($event);
     }
 
     /**

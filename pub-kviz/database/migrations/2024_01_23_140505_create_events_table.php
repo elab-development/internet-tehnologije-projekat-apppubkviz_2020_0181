@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('Mesto')->nullable(false);
             $table->text('Opis')->nullable(false);
             $table->unique('DogadjajID');
-            $table->timestamps();
+            $table->timestamps(false);
         });
     }
 
