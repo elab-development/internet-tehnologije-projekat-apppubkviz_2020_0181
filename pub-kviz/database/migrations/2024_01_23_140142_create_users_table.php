@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('Password')->nullable(false);
             $table->unique('KorisnikID');
             $table->timestamps(false);
+            
         });
     }
 

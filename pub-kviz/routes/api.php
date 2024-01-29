@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\TeamEventController;
+use App\Http\Controllers\API\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,6 @@ Route::resource('events', EventController::class)->only(['index', 'show']);
 
 Route::get('teams_events', [TeamEventController::class, 'index']);
 Route::get('teams_events/{id}', [TeamEventController::class, 'show']);
+
+Route::post('register',[AuthController::class,'register']);
+Route::post('login',[AuthController::class,'login']);
