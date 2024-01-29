@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->bigIncrements('DogadjajID')->nullable(false);
-            $table->string('Naziv')->nullable(false);
-            $table->date('DatumOdrzavanja')->nullable(false);
-            $table->time('VremeOdrzavanja')->nullable(false);
-            $table->string('Mesto')->nullable(false);
-            $table->text('Opis')->nullable(false);
-            $table->unique('DogadjajID');
+            $table->bigIncrements('dogadjajID')->nullable(false);
+            $table->string('naziv')->nullable(false);
+            $table->date('datumOdrzavanja')->nullable(false);
+            $table->time('vremeOdrzavanja')->nullable(false);
+            $table->string('mesto')->nullable(false);
+            $table->text('opis')->nullable(false);
+            $table->unique('dogadjajID');
             $table->timestamps(false);
         });
     }

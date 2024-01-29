@@ -19,12 +19,12 @@ class EventResource extends JsonResource
     {
         //return parent::toArray($request);
         return [
-            'DogadjajID' => $this->resource->DogadjajID,
-            'Naziv' => $this->resource->Naziv,
-            'DatumOdrzavanja' => $this->resource->DatumOdrzavanja,
-            'VremeOdrzavanja' => $this->resource->VremeOdrzavanja,
-            'Mesto' => $this->resource->Mesto,
-            'Opis' => $this->resource->Opis,
+            'dogadjajID' => $this->resource->dogadjajID,
+            'naziv' => $this->resource->naziv,
+            'datumOdrzavanja' => $this->resource->datumOdrzavanja,
+            'vremeOdrzavanja' => $this->resource->vremeOdrzavanja,
+            'mesto' => $this->resource->mesto,
+            'opis' => $this->resource->opis,
         ];
     }
 }

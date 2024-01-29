@@ -11,23 +11,23 @@ class Event extends Model
 
     protected $table = 'events';
 
-    protected $primaryKey = 'DogadjajID';
+    protected $primaryKey = 'dogadjajID';
 
     public $incrementing = true;
 
     public $timestamps = false;
 
     protected $fillable = [
-        'Naziv',
-        'DatumOdrzavanja',
-        'VremeOdrzavanja',
-        'Mesto',
-        'Opis',
+        'naziv',
+        'datumOdrzavanja',
+        'vremeOdrzavanja',
+        'mesto',
+        'opis',
     ];
 
     public function teams()
     {
-        return $this->belongsToMany(Teams::class, 'team_event', 'IDDogadjaj', 'IDTim')
-            ->withPivot('BrojPoena');
+        return $this->belongsToMany(Team::class, 'team_event', 'IDDogadjaj', 'IDTim')
+            ->withPivot('brojPoena');
     }
 }

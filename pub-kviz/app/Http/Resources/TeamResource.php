@@ -19,9 +19,9 @@ class TeamResource extends JsonResource
     {
         //return parent::toArray($request);
         return [
-            'TimID' => $this->resource->TimID,
-            'NazivTima' => $this->resource->NazivTima,
-            'BrojClanova' => $this->resource->BrojClanova,
+            'timID' => $this->resource->timID,
+            'nazivTima' => $this->resource->nazivTima,
+            'brojClanova' => $this->resource->brojClanova,
         ];
     }
 }

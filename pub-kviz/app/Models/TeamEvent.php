@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Team_Event extends Model
+class TeamEvent extends Model
 {
     use HasFactory;
 
     protected $table = 'team_event';
 
-    protected $primaryKey = 'TimDogadjajID';
+    protected $primaryKey = 'timDogadjajID';
 
     public $incrementing = true;
 
@@ -20,17 +20,17 @@ class Team_Event extends Model
     protected $fillable = [
         'IDDogadjaj',
         'IDTim',
-        'BrojPoena',
+        'brojPoena',
     ];
 
     public function team()
     {
-        return $this->belongsTo(Teams::class, 'IDTim', 'TimID');
+        return $this->belongsTo(Team::class, 'IDTim', 'timID');
     }
 
     public function event()
     {
-        return $this->belongsTo(Event::class, 'IDDogadjaj', 'DogadjajID');
+        return $this->belongsTo(Event::class, 'IDDogadjaj', 'dogadjajID');
     }
     
 }

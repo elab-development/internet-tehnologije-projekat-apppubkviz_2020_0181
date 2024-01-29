@@ -21,10 +21,10 @@ class TeamEventResource extends JsonResource
         //return parent::toArray($request);
         
         return [
-            'TimDogadjajID' => $this->resource->TimDogadjajID,
-            'NazivDogadjaj'=> $this->event->Naziv,
-            'NazivTima' => $this->team->NazivTima,
-            'BrojPoena' => $this->resource->BrojPoena,
+            'timDogadjajID' => $this->resource->timDogadjajID,
+            'nazivDogadjaj'=> $this->event->naziv,
+            'nazivTima' => $this->team->nazivTima,
+            'brojPoena' => $this->resource->brojPoena,
         ];
     }
 }

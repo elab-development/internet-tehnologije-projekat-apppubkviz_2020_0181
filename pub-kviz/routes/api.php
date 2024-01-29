@@ -24,7 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/users', [UserController::class, 'index']);
-Route::get('/users/{id}', [UserController::class, 'show']);
+//Route::get('/users/{id}', [UserController::class, 'show']);
+Route::resource('users', UserController::class)->only(['show']);
 
 Route::resource('teams', TeamController::class)->only(['index', 'show']);
 Route::resource('events', EventController::class)->only(['index', 'show']);

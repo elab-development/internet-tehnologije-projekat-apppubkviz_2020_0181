@@ -12,17 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('team_event', function (Blueprint $table) {
-            $table->bigIncrements('TimDogadjajID')->nullable(false);
 
-        
+            $table->bigIncrements('timDogadjajID')->nullable(false);       
             $table->bigInteger('IDDogadjaj')->unsigned();
-            $table->foreign('IDDogadjaj')->references('DogadjajID')->on('events');
+            $table->foreign('IDDogadjaj')->references('dogadjajID')->on('events');
             $table->bigInteger('IDTim')->unsigned();
-            $table->foreign('IDTim')->references('TimID')->on('teams');
-
-            $table->integer('BrojPoena')->nullable(false);
-            
-            $table->unique('TimDogadjajID');
+            $table->foreign('IDTim')->references('timID')->on('teams');
+            $table->integer('brojPoena')->nullable(false);           
+            $table->unique('timDogadjajID');
             $table->timestamps(false);
         });
     }

@@ -12,16 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('teams', function (Blueprint $table) {
-            $table->bigIncrements('TimID')->nullable(false);
 
-        
+            $table->bigIncrements('timID')->nullable(false);       
             $table->bigInteger('IDKorisnik')->unsigned();
-            $table->foreign('IDKorisnik')->references('KorisnikID')->on('users');
-
-            $table->string('NazivTima')->nullable(false);
-            $table->string('BrojClanova')->nullable(false);
-            $table->unique('TimID');
-
+            $table->foreign('IDKorisnik')->references('korisnikID')->on('users');
+            $table->string('nazivTima')->nullable(false);
+            $table->string('brojClanova')->nullable(false);
+            $table->unique('timID');
             $table->timestamps(false);
         });
     }

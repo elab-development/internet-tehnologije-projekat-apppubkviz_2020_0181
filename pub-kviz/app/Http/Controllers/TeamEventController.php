@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Team_Event;
+use App\Models\TeamEvent;
 use Illuminate\Http\Request;
 use App\Http\Resources\TeamEventResource;
 use App\Http\Resources\TeamEventCollection;
@@ -14,7 +14,7 @@ class TeamEventController extends Controller
      */
     public function index()
     {
-        $teamEvents = Team_Event::all();
+        $teamEvents = TeamEvent::all();
         return new TeamEventCollection($teamEvents);
     }
 
@@ -39,7 +39,7 @@ class TeamEventController extends Controller
      */
     public function show($teamEventID)
     {
-        $teamEvent = Team_Event::find($teamEventID);
+        $teamEvent = TeamEvent::find($teamEventID);
         if(is_null($teamEvent)){
             return response()->json('Data not found');
         }
@@ -50,7 +50,7 @@ class TeamEventController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Team_Event $team_Event)
+    public function edit(TeamEvent $team_Event)
     {
         //
     }
@@ -58,7 +58,7 @@ class TeamEventController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Team_Event $team_Event)
+    public function update(Request $request, TeamEvent $team_Event)
     {
         //
     }
@@ -66,7 +66,7 @@ class TeamEventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Team_Event $team_Event)
+    public function destroy(TeamEvent $team_Event)
     {
         //
     }

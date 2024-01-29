@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Teams;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use App\Http\Resources\TeamResource;
 use App\Http\Resources\TeamCollection;
@@ -14,7 +14,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teams = Teams::all();
+        $teams = Team::all();
         return new TeamCollection($teams);
     }
 
@@ -37,7 +37,7 @@ class TeamController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Teams $team)
+    public function show(Team $team)
     {
         return new TeamResource($team);
     }
@@ -45,7 +45,7 @@ class TeamController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Teams $teams)
+    public function edit(Team $teams)
     {
         //
     }
@@ -53,7 +53,7 @@ class TeamController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Teams $teams)
+    public function update(Request $request, Team $teams)
     {
         //
     }
@@ -61,7 +61,7 @@ class TeamController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Teams $teams)
+    public function destroy(Team $teams)
     {
         //
     }

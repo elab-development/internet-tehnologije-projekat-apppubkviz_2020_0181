@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\UserCollection;
@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = Users::all();
+        $users = User::all();
         return new UserCollection($users);
     }
 
@@ -37,20 +37,15 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($user_id)
+    public function show(User $user)
     {     
-        $user = Users::find($user_id);
-        if(is_null($user)){
-            return response()->json('Data not found');
-        }
-
         return new UserResource($user);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Users $users)
+    public function edit(User $users)
     {
         //
     }
@@ -58,7 +53,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Users $users)
+    public function update(Request $request, User $users)
     {
         //
     }
@@ -66,7 +61,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Users $users)
+    public function destroy(User $users)
     {
         //
     }

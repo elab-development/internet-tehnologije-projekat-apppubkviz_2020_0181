@@ -19,10 +19,10 @@ class UserResource extends JsonResource
     {
         //return parent::toArray($request);
         return [
-            'KorisnikID' => $this->resource->KorisnikID,
-            'Ime' => $this->resource->Ime,
-            'Prezime' => $this->resource->Prezime,
-            'BrojTelefona' => $this->resource->Telefon,
+            'korisnikID' => $this->resource->korisnikID,
+            'ime' => $this->resource->ime,
+            'prezime' => $this->resource->prezime,
+            'telefon' => $this->resource->telefon,
         ];
     }
 }
