@@ -6,6 +6,7 @@ use App\Models\TeamEvent;
 use Illuminate\Http\Request;
 use App\Http\Resources\TeamEventResource;
 use App\Http\Resources\TeamEventCollection;
+use Illuminate\Support\Facades\Validator;
 
 class TeamEventController extends Controller
 {
@@ -31,7 +32,23 @@ class TeamEventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'IDDogadjaj' => 'required',
+            'IDTim' => 'required'
+            
+        ]);
+ 
+        if($validator -> fails())
+            return response()->json($validator->errors());
+           
+        $teamevent = TeamEvent::create([
+            'IDDogadjaj' => $request->IDDogadjaj,
+            'IDTim' => $request->IDTim,
+            'brojPoena'=>$request->brojPoena
+            
+        ]);
+ 
+        return response()->json(['Successful registration to the event.', new TeamEventResource($teamevent)]);
     }
 
     /**
@@ -68,6 +85,8 @@ class TeamEventController extends Controller
      */
     public function destroy(TeamEvent $team_Event)
     {
-        //
+        $team_Event->delete();
+ 
+        return response()->json(['The team_event has been deleted successfully.']);
     }
 }

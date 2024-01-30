@@ -23,10 +23,10 @@ class Team extends Model
         'brojClanova',
     ];
 
-    public function user()
-    {
-        return $this->hasOne(User::class, 'korisnikID', 'IDKorisnik');
-    }
+    //public function user()
+    //{
+     //   return $this->hasOne(User::class, 'korisnikID', 'IDKorisnik');
+    //}
 
     public function events()
     {
@@ -34,5 +34,9 @@ class Team extends Model
             ->withPivot('brojPoena');            
     }
 
+    public function user()
+    {
+    return $this->belongsTo(User::class, 'IDKorisnik', 'korisnikID');
+    }
 
 }

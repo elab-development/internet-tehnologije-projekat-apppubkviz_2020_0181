@@ -45,8 +45,10 @@ class User extends Authenticatable
      */
 
 
+    
+
     public function team()
     {
-        return $this->hasOne(Team::class, 'IDKorisnik', 'korisnikID');
+    return $this->hasMany(Team::class, 'IDKorisnik', 'korisnikID');
     }
 }
