@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\TeamEventResource;
 use App\Http\Resources\TeamEventCollection;
 use Illuminate\Support\Facades\Validator;
-
+use PDF;
 class TeamEventController extends Controller
 {
     /**
@@ -88,5 +88,36 @@ class TeamEventController extends Controller
         $team_Event->delete();
  
         return response()->json(['The team_event has been deleted successfully.']);
+    }
+
+    public function prikaziRezultateDogadjaja($eventID)
+    {
+        
+        $teams = TeamEvent::with(['team', 'event'])
+            ->where('IDDogadjaj', $eventID)
+            ->get();
+
+        
+        $pdf = PDF::loadHTML($this->formatirajPDF($teams));
+
+        
+        return $pdf->stream('results.pdf');
+    }
+
+    private function formatirajPDF($teams)
+    {
+        $html = '<h1>Rezultati timova</h1>';
+        $html .= '<table style="border-collapse: collapse; width: 20%;">';
+        $html .= '<thead><tr><th>Tim</th><th>Broj poena</th></tr></thead>';
+        $html .= '<tbody>';
+        foreach ($teams as $team) {
+            $html .= '<tr>';
+            $html .= '<td style="padding-right: 10px;">' . $team->team->nazivTima . '</td>';
+            $html .= '<td>' . $team->brojPoena . '</td>';
+            $html .= '</tr>';
+        }
+        $html .= '</tbody></table>';
+        
+        return $html;
     }
 }

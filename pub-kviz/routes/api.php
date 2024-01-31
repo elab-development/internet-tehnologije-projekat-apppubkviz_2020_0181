@@ -25,9 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/users', [UserController::class, 'index']);
 
-//Route::resource('users', UserController::class)->only(['show']);
 
-//Route::resource('teams', TeamController::class)->only(['index', 'show']);
 Route::resource('events', EventController::class)->only(['index', 'show']);
 
 Route::get('teams_events', [TeamEventController::class, 'index']);
@@ -37,7 +35,8 @@ Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
 
 Route::get('/events/{year}/{month}', [EventController::class,'vratiDogadjajePoMesecuIGodini']);
-Route::get('/events/search',[EventController::class,'vratiDogadjajePoNazivu']);
+
+Route::get('/team_event/results/{eventID}', [TeamEventController::class, 'prikaziRezultateDogadjaja']);
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/profile', function(Request $request) {
@@ -48,5 +47,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 
     Route::resource('teams', TeamController::class)->only(['store','update','destroy']);
 
-    Route::resource('add_teams_events', TeamEventController::class)->only(['store','destroy']);
+    Route::resource('add_team_event', TeamEventController::class)->only(['store']);
+    Route::resource('delete_team_event', TeamEventController::class)->only(['destroy']);
+    
 });
