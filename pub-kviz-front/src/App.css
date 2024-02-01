@@ -409,3 +409,40 @@ button:hover {
   background-color: #fdcd5e;
 }
 
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+ 
+.active {
+  background-color: #FFBD33;
+  color: white;
+  margin: 0.3em;
+  height: 2.5em;
+  width: 2.5em;
+  padding: 0.1em;
+  border-radius: 0.3em;
+  border: none;
+  margin-top: 0.5em;
+}
+ 
+.active:hover {
+  cursor: pointer;
+}
+ 
+.inactive {
+  margin: 0.3em;
+  height: 2.5em;
+  width: 2.5em;
+  background-color: #f9dc9b;
+  color:white;
+  padding: 0.3em;
+  border-radius: 0.3em;
+  border: none;
+  margin-top: 0.5em;
+}
+ 
+.inactive:hover {
+  cursor: pointer;
+}
