@@ -23,6 +23,8 @@ function App() {
       time: "18:00h",
       location: "Kraljice Milice 20, Beograd",
       tagline: "Ja sam taj koji kuca",
+      teamName:"",
+      teamMembers:0
     },
     {
       id: 2,
@@ -33,8 +35,9 @@ function App() {
       date: "15.2.2024.",
       time: "20:00h",
       location: "Pozorišni Trg, Novi Sad",
-      tagline: "Ti si čarobnjak, Hari"
-
+      tagline: "Ti si čarobnjak, Hari",
+      teamName:"",
+      teamMembers:0
     },
     {
       id: 3,
@@ -45,7 +48,9 @@ function App() {
       date: "14.2.2024.",
       time: "13:00h",
       location: "Kraljice Marije 10, Beograd",
-      tagline: "Ukoliko mi gorimo, gorećeš i ti sa nama"
+      tagline: "Ukoliko mi gorimo, gorećeš i ti sa nama",
+      teamName:"",
+      teamMembers:0
     },
     {
       id: 4,
@@ -56,7 +61,9 @@ function App() {
       date: "18.2.2024.",
       time: "18:00h",
       location: "Mileševska 5, Beograd",
-      tagline: "Za početak snimićemo jedan kompakt CD"
+      tagline: "Za početak snimićemo jedan kompakt CD",
+      teamName:"",
+      teamMembers:0
     },
     {
       id: 5,
@@ -67,12 +74,36 @@ function App() {
       date: "25.2.2024.",
       time: "21:00h",
       location: "Admirala Geparta, Niš",
-      tagline: "Uspeh nije slučajnost, uspeh je zapravo izbor."
+      tagline: "Uspeh nije slučajnost, uspeh je zapravo izbor.",
+      teamName:"",
+      teamMembers:0
     }
     
   ]);
 
   const [joinedEvents,setJoinedEvents] = useState([]);
+  const [eventNum, setEventNum] = useState(0);
+ 
+  function refreshEvents(id,teamName,teamMembers) {
+    if (!joinedEvents.some((event) => event.id === id)) {
+     
+      let updatedEvents = [...joinedEvents];
+      let newEvent = events.find((event) => event.id === id);
+    
+      updatedEvents.push({
+        ...newEvent,
+        teamName: teamName,
+        teamMembers: teamMembers,
+      });
+    
+      setJoinedEvents(updatedEvents);
+      setEventNum(eventNum + 1);
+    }
+   
+  }
+
+
+
 
   return (
     <div className='App'>
@@ -80,10 +111,10 @@ function App() {
       <NavBar />
       <Routes>
         <Route 
-         path = '/' element = {<Events events={events} />}
+         path = '/' element = {<Events events={events} refresh={refreshEvents} />}
         />
         <Route
-          path = '/events' element = {<JoinedEvents events = {joinedEvents} eventNum = {0} />}
+          path = '/events' element = {<JoinedEvents events = {joinedEvents} eventNum = {eventNum} />}
         />
       </Routes>
       </BrowserRouter>

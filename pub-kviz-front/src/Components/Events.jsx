@@ -1,7 +1,7 @@
 import React from 'react'
 import Event from './Event';
 
-function Events({events}) {
+function Events({events, refresh}) {
     const currentEvent = events.slice(0, 5);
   
     return (
@@ -9,7 +9,7 @@ function Events({events}) {
         <h1 className='subtitle'>DOSTUPNI PUB KVIZOVI</h1>
         <div className='events'>
           {currentEvent.map((event) => {
-            return <Event data = {event} key = {event.id} inPrijave = {0} />
+            return <Event data = {event} key = {event.id} inPrijave = {0}  refresh = {refresh} />
           })}
         </div>
         

@@ -2,7 +2,7 @@ import React from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { useState } from 'react';
 
-function Event({data, inPrijave}) {  
+function Event({data, inPrijave, refresh}) {  
     const [teamName, setTeamName] = useState('');
     const [teamMembers, setTeamMembers] = useState('');  
 
@@ -46,7 +46,7 @@ function Event({data, inPrijave}) {
                     onChange={(e) => setTeamMembers(e.target.value)}
                 />
                 </div>
-                <button className={'btn1'}>
+                <button className={'btn1'} onClick={() => refresh(data.id,teamName,teamMembers)}>
                     <p>Prijavi tim</p>
                 </button>
           </div>
@@ -65,7 +65,7 @@ function Event({data, inPrijave}) {
                   <p className='datab'>{data.location}</p>
                   <p className='datab'>{data.date} • {data.time}</p>
                   
-                      <p className='team' style={{marginLeft: 1.1 + "em"}}>Tim: {teamName}</p>
+                  <p className='team' style={{marginLeft: 1.1 + "em"}}>Tim: {data.teamName}, Broj članova: {data.teamMembers}</p>
                       
               
               </div>
