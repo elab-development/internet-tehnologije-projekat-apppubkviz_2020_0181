@@ -1,7 +1,7 @@
 import React from 'react'
 import Event from './Event';
 
-function JoinedEvents({events,eventNum, remove}) {
+function JoinedEvents({events,eventNum, remove, removeAll}) {
   return (
     <div className='frame'>
       {eventNum > 0 ? (<h1 className='subtitle'>VAŠI DOGAĐAJI</h1>) : (<h1 className='subtitle'>NEMA PRIJAVLJENIH DOGADJAJA</h1>)}
@@ -12,7 +12,7 @@ function JoinedEvents({events,eventNum, remove}) {
       </div>
       {eventNum > 0 ? (
         <>
-        <button className = 'deleteEvents'>
+        <button className = 'deleteEvents'  onClick={() => removeAll()}>
         <p>Obriši sve dogadjaje</p>
         </button>
         </>

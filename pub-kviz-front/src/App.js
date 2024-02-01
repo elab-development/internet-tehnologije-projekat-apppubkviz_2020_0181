@@ -108,6 +108,11 @@ function App() {
     setEventNum(eventNum-1);
   }
 
+  function removeAllEvent(){
+    setJoinedEvents([]);
+    setEventNum(0);
+  }
+
 
   return (
     <div className='App'>
@@ -118,7 +123,7 @@ function App() {
          path = '/' element = {<Events events={events} refresh={refreshEvents} />}
         />
         <Route
-          path = '/events' element = {<JoinedEvents events = {joinedEvents} eventNum = {eventNum} remove={removeEvent} />}
+          path = '/events' element = {<JoinedEvents events = {joinedEvents} eventNum = {eventNum} remove={removeEvent} removeAll={removeAllEvent} />}
         />
       </Routes>
       </BrowserRouter>
