@@ -2,7 +2,7 @@ import React from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { useState } from 'react';
 
-function Event({data, inPrijave, refresh}) {  
+function Event({data, inPrijave, refresh, remove}) {  
     const [teamName, setTeamName] = useState('');
     const [teamMembers, setTeamMembers] = useState('');  
 
@@ -73,7 +73,7 @@ function Event({data, inPrijave, refresh}) {
 
           <div className='btns'>
               <div className='btnsSub'>
-              <button className='trash' >
+              <button className='trash' onClick={() => remove(data.id)}>
                   <FaTrashAlt className='btnb'/>
               </button>
           </div>    

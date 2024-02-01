@@ -102,7 +102,11 @@ function App() {
    
   }
 
-
+  function removeEvent(id) {
+    const updatedEvents = joinedEvents.filter((event) => event.id !== id);
+    setJoinedEvents(updatedEvents);
+    setEventNum(eventNum-1);
+  }
 
 
   return (
@@ -114,7 +118,7 @@ function App() {
          path = '/' element = {<Events events={events} refresh={refreshEvents} />}
         />
         <Route
-          path = '/events' element = {<JoinedEvents events = {joinedEvents} eventNum = {eventNum} />}
+          path = '/events' element = {<JoinedEvents events = {joinedEvents} eventNum = {eventNum} remove={removeEvent} />}
         />
       </Routes>
       </BrowserRouter>
