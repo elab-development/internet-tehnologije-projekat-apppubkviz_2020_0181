@@ -31,7 +31,7 @@ function Event({data, inPrijave, refresh, remove}) {
   
               <div className='btnsSub'>
                 <div style={{paddingRight:20}}>
-                <input style={{ height: 3+"em"}}
+                <input style={{ height: 1+"em"}}
                     type='text'
                     placeholder='Naziv tima'
                     value={teamName}
@@ -39,7 +39,7 @@ function Event({data, inPrijave, refresh, remove}) {
                 />
                 </div>
                 <div style={{paddingRight:20}}>
-                <input style={{ height: 3+"em"}}
+                <input style={{ height: 1+"em"}}
                     type='number'
                     placeholder='Broj članova'
                     value={teamMembers}

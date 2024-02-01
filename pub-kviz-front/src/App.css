@@ -64,6 +64,18 @@
   padding: 0.5em;
 }
 
+.emailContainer {
+  display: flex;
+  flex-direction: row;
+  min-height: 2px;
+  border-radius: 0.3em;
+  height: 2em;
+  text-align: center;
+  margin: 1em;
+  padding: 0.5em;
+  color: #ffffff;
+}
+
 .title {
   text-align: center;
   color: #FFBD33;
@@ -264,6 +276,7 @@
   width: 8em;
   align-items: center;
   justify-content: center;
+  
 }
 
 .btn1 p {
@@ -342,5 +355,57 @@
 .deleteEvents:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+}
+
+.login-form {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+}
+
+
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 10px 0 5px;
+  color: #555;
+}
+
+input {
+  width: 80%;
+  padding: 10px;
+  margin: 5px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #FFBD33;
+  color:white;
+  padding: 0.3em;
+  border-radius: 0.3em;
+  border: none;
+  margin: 0.2em;
+  height: 3em;
+  width: 13em;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #fdcd5e;
 }
 

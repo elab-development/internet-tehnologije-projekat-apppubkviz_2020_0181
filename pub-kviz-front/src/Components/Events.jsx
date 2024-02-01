@@ -2,7 +2,7 @@ import React from 'react'
 import Event from './Event';
 
 function Events({events, refresh}) {
-    const currentEvent = events.slice(0, 5);
+    const currentEvent = events.slice(0, 6);
   
     return (
       <div className='frame'>

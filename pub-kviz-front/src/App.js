@@ -1,5 +1,6 @@
 
 import NavBar from './Components/NavBar';
+import Login from './Components/Login';
 import './App.css';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import  Events from './Components/Events';
@@ -9,6 +10,8 @@ import image2 from './slike/harrypotter.jpg';
 import image3 from './slike/hangergame.jpg';
 import image4 from './slike/munje.jpg';
 import image5 from './slike/nba.jpg';
+import image6 from './slike/gameofthrones.jpg';
+
 import JoinedEvents from './Components/JoinedEvents';
 
 function App() {
@@ -70,11 +73,24 @@ function App() {
       title: "NBA KVIZ",
       image:{jpg:image5},
       description:
-        "Da li znate koliko poena je Lebron Džejms najviše dao u svojoj karijeri, ili možda znate koji broj je nosio Peja Stojaković. Ukoliko su odgovori na prethodna pitanja da, ovaj kviz je sigurno za vas! Prijavite se i ukoliko osvojite prvo mesto, dobićete zvaničnu NBA loptu!",
+      "Da li znate koliko poena je Lebron Džejms najviše dao u svojoj karijeri, ili možda znate koji broj je nosio Peja Stojaković. Ukoliko su odgovori na prethodna pitanja da, ovaj kviz je sigurno za vas! Prijavite se i ukoliko osvojite prvo mesto, dobićete zvaničnu NBA loptu!",
+      date: "3.3.2024.",
+      time: "20:00h",
+      location: "Kneza Miloša, Beograd",
+      tagline: "Uspeh nije slučajnost, uspeh je zapravo izbor.",
+      teamName:"",
+      teamMembers:0
+    },
+    {
+      id: 6,
+      title: "IGRA PRESTOLA",
+      image:{jpg:image6},
+      description:
+        "Da li znate kako se zove Brenov jezovuk, Arjin mač ili Egonov praunuk? Ukoliko znate odgovor na neko od ovih pitanja onda je ovo pravi kviz za vas! Pridružite nam se u epskoj borbi za prvo mesto u redu meštrova Vesterosa.",
       date: "25.2.2024.",
       time: "21:00h",
       location: "Admirala Geparta, Niš",
-      tagline: "Uspeh nije slučajnost, uspeh je zapravo izbor.",
+      tagline: "Lanisteri uvek placaju svoje dugove",
       teamName:"",
       teamMembers:0
     }
@@ -113,6 +129,9 @@ function App() {
     setEventNum(0);
   }
 
+  
+
+  
 
   return (
     <div className='App'>
@@ -124,6 +143,9 @@ function App() {
         />
         <Route
           path = '/events' element = {<JoinedEvents events = {joinedEvents} eventNum = {eventNum} remove={removeEvent} removeAll={removeAllEvent} />}
+        />
+        <Route
+          path = '/login' element = {<Login />}
         />
       </Routes>
       </BrowserRouter>
