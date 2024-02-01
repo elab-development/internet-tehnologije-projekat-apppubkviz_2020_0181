@@ -153,6 +153,8 @@
   width: 50em;
 }
 
+
+
 .eventb {
   display: flex;
   flex-direction: row;
@@ -315,4 +317,30 @@
   width: 1.2em;
 }
 
+.deleteEvents {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(175, 82, 82);;
+  color:white;
+  padding: 0.3em;
+  border-radius: 0.3em;
+  border: none;
+  margin: 0.2em;
+  height: 3em;
+  width: 15em;
+  align-items: center;
+  justify-content: center;
+}
+
+.deleteEvents p {
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  align-self: center;
+}
+
+.deleteEvents:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
 

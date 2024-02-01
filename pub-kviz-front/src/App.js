@@ -9,6 +9,7 @@ import image2 from './slike/harrypotter.jpg';
 import image3 from './slike/hangergame.jpg';
 import image4 from './slike/munje.jpg';
 import image5 from './slike/nba.jpg';
+import JoinedEvents from './Components/JoinedEvents';
 
 function App() {
   const [events] = useState([
@@ -70,6 +71,9 @@ function App() {
     }
     
   ]);
+
+  const [joinedEvents,setJoinedEvents] = useState([]);
+
   return (
     <div className='App'>
       <BrowserRouter>
@@ -79,6 +83,7 @@ function App() {
          path = '/' element = {<Events events={events} />}
         />
         <Route
+          path = '/events' element = {<JoinedEvents events = {joinedEvents} eventNum = {0} />}
         />
       </Routes>
       </BrowserRouter>
