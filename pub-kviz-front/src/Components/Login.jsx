@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({uloguj}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [prijavljen, setPrijavljen] = useState(0);
   const navigate = useNavigate();
 
   const HandleSubmit = (e) => {
@@ -18,10 +17,10 @@ const Login = () => {
     // Ovde možete dodati logiku za obradu podataka sa forme
     console.log('Email:', email);
     console.log('Password:', password);
-    setPrijavljen(1);
+    uloguj(email);
     
     // Navigacija na drugu stranicu
-    navigate('/', { state: { email, password, prijavljen } });
+    navigate('/', { state: { } });
   };
 
   return (

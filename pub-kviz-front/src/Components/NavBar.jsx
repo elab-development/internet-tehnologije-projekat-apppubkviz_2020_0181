@@ -4,7 +4,7 @@ import { TbBrain } from "react-icons/tb";
 import { MdEventAvailable } from "react-icons/md";
 import { IoPersonCircleOutline } from "react-icons/io5";
 
-function NavBar(email,ulogovan) {
+function NavBar({email,ulogovan}) {
     return (
       <div className='navBar'>
         <div className='titleContainer'>
@@ -12,7 +12,7 @@ function NavBar(email,ulogovan) {
           </div>
           
           
-          {ulogovan === 1 ?(<h1 className='title'style={{ color: 'white' }}>email</h1>):(<></>) }
+          <h1 className='title' style={{ color: 'white' }}>{ulogovan === 1 ? email : ''}</h1>
           
           <div className='iconContainer'>
           <Link to = '/' className='link'>

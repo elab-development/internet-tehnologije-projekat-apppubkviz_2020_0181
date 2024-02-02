@@ -129,23 +129,36 @@ function App() {
     setEventNum(0);
   }
 
-  
+  const [email,setEmail] = useState([]);
+  const [ulogovan, setUlogovan] = useState(0);
 
+  function postaviUlogovanog(email){
+    setEmail(email);
+    setUlogovan(1);
+
+  }
   
 
   return (
     <div className='App'>
       <BrowserRouter>
-      <NavBar />
+      <NavBar email={email} ulogovan={ulogovan} />
       <Routes>
         <Route 
-         path = '/' element = {<Events events={events} refresh={refreshEvents} />}
+        
+         path = '/' element = {
+          <>
+          <NavBar email={email} ulogovan={ulogovan} />
+          <Events events={events} refresh={refreshEvents} />
+        </>
+         }
+         
         />
         <Route
           path = '/events' element = {<JoinedEvents events = {joinedEvents} eventNum = {eventNum} remove={removeEvent} removeAll={removeAllEvent} />}
         />
         <Route
-          path = '/login' element = {<Login />}
+          path = '/login' element = {<Login uloguj={postaviUlogovanog} />}
         />
       </Routes>
       </BrowserRouter>
