@@ -14,12 +14,12 @@ const Login = ({uloguj}) => {
       return;
     }
 
-    // Ovde možete dodati logiku za obradu podataka sa forme
+    
     console.log('Email:', email);
     console.log('Password:', password);
     uloguj(email);
     
-    // Navigacija na drugu stranicu
+    
     navigate('/', { state: { } });
   };
 

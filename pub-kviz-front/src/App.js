@@ -137,8 +137,20 @@ function App() {
     setUlogovan(1);
 
   }
+  const [filtriraniDogadjaji,setFiltriraniDogadjaji] = useState(events);
   
+  function filtriraj(izabraniMesec){
+    const filtrirani = events.filter((event) => {
+      const mesecOdrzavanja = event.date.split('.')[1];
+      return mesecOdrzavanja === izabraniMesec.toString();
+    });
+    
+    setFiltriraniDogadjaji(filtrirani);
 
+  }
+  function vratiSve(){
+    setFiltriraniDogadjaji(events);
+  }
   return (
     <div className='App'>
       <BrowserRouter>
@@ -149,13 +161,13 @@ function App() {
          path = '/' element = {
           <>
           <NavBar email={email} ulogovan={ulogovan} />
-          <Events events={events} refresh={refreshEvents} />
+          <Events events={filtriraniDogadjaji} refresh={refreshEvents} filtriraj={filtriraj} vratiSve={vratiSve} />
         </>
          }
          
         />
         <Route
-          path = '/events' element = {<JoinedEvents events = {joinedEvents} eventNum = {eventNum} remove={removeEvent} removeAll={removeAllEvent} />}
+          path = '/events' element = {<JoinedEvents events = {joinedEvents} eventNum = {eventNum} remove={removeEvent} removeAll={removeAllEvent} filtriraj={filtriraj} />}
         />
         <Route
           path = '/login' element = {<Login uloguj={postaviUlogovanog} />}
