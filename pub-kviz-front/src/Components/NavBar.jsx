@@ -12,7 +12,7 @@ function NavBar({email,ulogovan}) {
           </div>
           
           
-          <h1 className='title' style={{ color: 'white' }}>{ulogovan === 1 ? email : ''}</h1>
+          <h1 className='title' style={{ color: 'white' }}>{ulogovan != null ? email : ''}</h1>
           
           <div className='iconContainer'>
           <Link to = '/' className='link'>

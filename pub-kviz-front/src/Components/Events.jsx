@@ -17,28 +17,20 @@ function Events({events, refresh,filtriraj,vratiSve}) {
         setSelectedMonth(selectedMonthValue);
         console.log('Izaberite mesec');
         vratiSve();
-    } else {
-    
+    } else {  
       setSelectedMonth(selectedMonthValue);
       const selectedMonthNumber = parseInt(selectedMonthValue, 10) ;
-      filtriraj(selectedMonthNumber);
-    
-  }
-    
+      filtriraj(selectedMonthNumber);    
+    } 
   };
-
-  
     const months = [
       'Januar', 'Februar', 'Mart', 'April', 'Maj', 'Jun',
       'Jul', 'Avgust', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'
     ];
- 
     return (
       <div className='frame'>
         <h1 className='subtitle'>DOSTUPNI PUB KVIZOVI</h1>
         <div >
-
-       
         <select value={selectedMonth} onChange={handleMonthChange} style={{
           padding: '8px',
           backgroundColor: '#FFBD33',

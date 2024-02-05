@@ -1,6 +1,7 @@
 
 import NavBar from './Components/NavBar';
 import Login from './Components/Login';
+import Register from './Components/Register';
 import './App.css';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import  Events from './Components/Events';
@@ -130,11 +131,11 @@ function App() {
   }
 
   const [email,setEmail] = useState([]);
-  const [ulogovan, setUlogovan] = useState(0);
+  const[token,setToken]=useState();
 
-  function postaviUlogovanog(email){
+  function postaviUlogovanog(email,token){
     setEmail(email);
-    setUlogovan(1);
+    setToken(token);
 
   }
   const [filtriraniDogadjaji,setFiltriraniDogadjaji] = useState(events);
@@ -154,13 +155,13 @@ function App() {
   return (
     <div className='App'>
       <BrowserRouter>
-      <NavBar email={email} ulogovan={ulogovan} />
+      <NavBar email={email} ulogovan={token} />
       <Routes>
         <Route 
         
          path = '/' element = {
           <>
-          <NavBar email={email} ulogovan={ulogovan} />
+          
           <Events events={filtriraniDogadjaji} refresh={refreshEvents} filtriraj={filtriraj} vratiSve={vratiSve} />
         </>
          }
@@ -171,6 +172,9 @@ function App() {
         />
         <Route
           path = '/login' element = {<Login uloguj={postaviUlogovanog} />}
+        />
+        <Route
+          path = '/register' element = {<Register />}
         />
       </Routes>
       </BrowserRouter>

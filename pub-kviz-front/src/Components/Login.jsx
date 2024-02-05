@@ -1,26 +1,39 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = ({uloguj}) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [userData,setUserData]=useState(
+    {
+      email:'',
+      password:'',
+    }
+  )
   const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  
+  }
 
   const HandleSubmit = (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
-      alert('Sva polja su obavezna!');
-      return;
-    }
+    axios.post("http://127.0.0.1:8000/api/login",userData).then((res)=>{
+        console.log(res.data);
+        uloguj(userData.email,res.data.access_token);
+        navigate('/', {});
+      }).catch((e)=>{
+        console.log(e);
+        alert('Podaci nisu ispravni.');
+      })
 
-    
-    console.log('Email:', email);
-    console.log('Password:', password);
-    uloguj(email);
-    
-    
-    navigate('/', { state: { } });
+      
   };
 
   return (
@@ -31,19 +44,22 @@ const Login = ({uloguj}) => {
         <input
           type="text"
           id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          name='email'
+          value={userData.email}
+          onChange={handleChange} required
         />
 
         <label htmlFor="password">Password:</label>
         <input
           type="password"
           id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          name='password'
+          value={userData.password}
+          onChange={handleChange} required
         />
 
         <button type="submit">Login</button>
+        <p>Niste registrovani? <Link to="/register">Registrujte se.</Link></p>
       </form>
     </div>
   );

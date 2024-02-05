@@ -12,9 +12,7 @@ function Event({data, inPrijave, refresh, remove}) {
           <>
           
           <div className='dataContainer'>
-            <div className='imageContainer'>
-                <img src={data.image.jpg} alt='Slika'/>
-            </div>
+            
 
               <div className='dataSubcontainer'>
                   <h1>{data.title}</h1>
