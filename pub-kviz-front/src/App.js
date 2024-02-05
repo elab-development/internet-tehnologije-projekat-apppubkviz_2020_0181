@@ -155,7 +155,7 @@ function App() {
   return (
     <div className='App'>
       <BrowserRouter>
-      <NavBar email={email} ulogovan={token} />
+      <NavBar email={email} ulogovan={token} uloguj={postaviUlogovanog}/>
       <Routes>
         <Route 
         
