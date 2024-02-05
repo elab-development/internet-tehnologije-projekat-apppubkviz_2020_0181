@@ -21,6 +21,7 @@ class EventResource extends JsonResource
         return [
             'dogadjajID' => $this->resource->dogadjajID,
             'naziv' => $this->resource->naziv,
+            'kratakOpis'=>$this->resource->kratakOpis,
             'datumOdrzavanja' => $this->resource->datumOdrzavanja,
             'vremeOdrzavanja' => $this->resource->vremeOdrzavanja,
             'mesto' => $this->resource->mesto,

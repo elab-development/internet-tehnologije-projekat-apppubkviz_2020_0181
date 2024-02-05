@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->bigIncrements('dogadjajID')->nullable(false);
             $table->string('naziv')->nullable(false);
+            $table->string('kratakOpis')->nullable(false);
             $table->date('datumOdrzavanja')->nullable(false);
             $table->time('vremeOdrzavanja')->nullable(false);
             $table->string('mesto')->nullable(false);

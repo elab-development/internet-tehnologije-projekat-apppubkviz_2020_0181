@@ -19,6 +19,7 @@ class Event extends Model
 
     protected $fillable = [
         'naziv',
+        'kratakOpis',
         'datumOdrzavanja',
         'vremeOdrzavanja',
         'mesto',

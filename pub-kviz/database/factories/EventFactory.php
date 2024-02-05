@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Event;
+use Illuminate\Support\Str;
 
 
 /**
@@ -23,6 +24,7 @@ class EventFactory extends Factory
     {
         return [
             'naziv' => $this->faker->word,
+            'kratakOpis'=>$this->faker->text(10),
             'datumOdrzavanja' => $this->faker->date,
             'vremeOdrzavanja' => $this->faker->time,
             'mesto' => $this->faker->city,
