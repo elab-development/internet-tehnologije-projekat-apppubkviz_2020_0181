@@ -257,6 +257,21 @@
   justify-content: space-between;
 }
 
+.btns1 {
+  margin-top: 7em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 8px;
+  
+  
+}
+
+.subtitlet {
+  
+  font-weight: 450;
+  margin-bottom: 0.2em;
+}
 .btnsSub {
   display: flex;
   flex-direction: row;
