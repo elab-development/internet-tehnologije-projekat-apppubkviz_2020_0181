@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Team;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\TeamResource;
 use App\Http\Resources\TeamCollection;
@@ -98,4 +99,13 @@ class TeamController extends Controller
  
         return response()->json(['The team has been deleted successfully.']);
     }
+
+    public function vratiTimoveKorisnika(){
+
+        $ulogovan = Auth::user();
+        $timovi = $ulogovan->team()->get();
+        return new TeamCollection($timovi);
+
+    }
+
 }
