@@ -1,14 +1,36 @@
 import React from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { useState } from 'react';
+import axios from 'axios';
 
-function Event({data}) {  
-     
+function Team({data,setUcitani}) { 
+    
+
+
+    function deleteTeam(id){
+        let config = {
+            method: 'delete',
+            
+            url: 'http://127.0.0.1:8000/api/teams/'+id,
+            headers: {
+              'Authorization': 'Bearer '+window.sessionStorage.getItem("auth_token"),
+            },
+            
+          };
+          axios.request(config)
+          .then((response) => {
+            console.log(JSON.stringify(response.data));
+            setUcitani(0);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+    } 
+
 
     return (
-      <div className='eventb'>
-          
-           
+      <div className='eventb'>   
           <>
           <div className='dataContainer'>
                 <div className='imageContainer'>
@@ -27,7 +49,7 @@ function Event({data}) {
 
           <div className='btns'>
               <div className='btnsSub'>
-              <button className='trash'>
+              <button className='trash' onClick={() => deleteTeam(data.timID)}>
                   <FaTrashAlt className='btnb'/>
               </button>
           </div>    
@@ -40,4 +62,4 @@ function Event({data}) {
     
   };
   
-  export default Event;
+  export default Team;

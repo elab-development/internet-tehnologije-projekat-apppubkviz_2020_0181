@@ -96,23 +96,17 @@ function Teams() {
                 />
                 </div>
                 <button className={'btn1'} onClick={() => insert()}>
-                    <p>Prijavi tim</p>
+                    <p>Kreiraj tim</p>
                 </button>
           </div>
           </div>
       {teams.length>0 ? (<h1 className='subtitlet'>VAŠI TIMOVI</h1>) : (<h1 className='subtitlet'>NEMA KREIRANIH TIMOVA</h1>)}
       <div className='eventsb'>
         {teams.map((team) => (
-          <Team data = {team} key = {team.timID}  />
+          <Team data = {team} key = {team.timID} setUcitani={setUcitani}  />
         ))}
       </div>
-      {teams.length>0 ? (
-        <>
-        <button className = 'deleteEvents'>
-        <p>Obriši sve timove</p>
-        </button>
-        </>
-      ) : (<></>)}
+      
     </div>
   );
 };
