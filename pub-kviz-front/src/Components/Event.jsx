@@ -2,9 +2,31 @@ import React from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { useState } from 'react';
 
-function Event({data, inPrijave, refresh, remove}) {  
-    const [teamName, setTeamName] = useState('');
-    const [teamMembers, setTeamMembers] = useState('');  
+function Event({data, inPrijave, teams}) {  
+
+    const [selectedTeam, setSelectedTeam] = useState('');
+
+    const handleTeamChange = (team) => {
+    const selectedTeamValue = team.target.value;
+    
+    if (selectedTeamValue === '') {
+        setSelectedTeam(selectedTeamValue);
+        console.log('Izaberite tim');
+        // axios.get("http://127.0.0.1:8000/api/events").then((res) => {
+        //   console.log(res.data);
+        //   setEvents(res.data.Dogadjaji);
+        // });        
+    } else {  
+      setSelectedTeam(selectedTeamValue);
+    //   axios.get("http://127.0.0.1:8000/api/events/2009/"+selectedMonthNumber).then((res) => {
+    //       console.log(res.data);
+    //       setEvents(res.data.events);
+          
+    //     });
+         
+    } 
+
+    }
 
     return (
       <div className={inPrijave === 0 ? 'event' : 'eventb'}>
@@ -28,27 +50,25 @@ function Event({data, inPrijave, refresh, remove}) {
               
   
               <div className='btnsSub'>
-                <div style={{paddingRight:20}}>
-                <input style={{ height: 1+"em"}}
-                    type='text'
-                    placeholder='Naziv tima'
-                    value={teamName}
-                    onChange={(e) => setTeamName(e.target.value)}
-                />
-                </div>
-                <div style={{paddingRight:20}}>
-                <input style={{ height: 1+"em"}}
-                    type='number'
-                    placeholder='Broj članova'
-                    value={teamMembers}
-                    onChange={(e) => setTeamMembers(e.target.value)}
-                />
-                </div>
-                <button className={'btn1'} onClick={() => refresh(data.id,teamName,teamMembers)}>
+              <div >
+                <select value={selectedTeam} onChange={handleTeamChange} style={{
+                padding: '8px',
+                backgroundColor: '#FFBD33',
+                borderRadius: '5px',
+                width: '200px',  
+                }}>
+                
+                {teams.map((team, index) => (
+                    <option key={index} value={team.nazivTima}>{team.nazivTima}</option>
+                ))}
+                </select>
+
+            </div>              
+                <button className={'btn1'}>
                     <p>Prijavi tim</p>
                 </button>
           </div>
-          </div>
+        </div>
   
           </>
           ) : (
@@ -71,7 +91,7 @@ function Event({data, inPrijave, refresh, remove}) {
 
           <div className='btns'>
               <div className='btnsSub'>
-              <button className='trash' onClick={() => remove(data.id)}>
+              <button className='trash'>
                   <FaTrashAlt className='btnb'/>
               </button>
           </div>    
@@ -82,5 +102,6 @@ function Event({data, inPrijave, refresh, remove}) {
       </div>
     );
   };
+
   
   export default Event;

@@ -20,7 +20,31 @@ function Events() {
   }, [ucitani]);
 
 
+    const[teams,setTeams]=useState([]);
+    const[ucitaniTimovi,setUcitaniTimovi]=useState(0);
 
+
+    let config = {
+      method: 'get',
+      url: 'http://127.0.0.1:8000/api/vratiTimoveKorisnika',
+      headers: { 
+        'Authorization': 'Bearer '+ window.sessionStorage.getItem("auth_token"),
+      }
+    };
+
+    useEffect(() => {
+      if (ucitaniTimovi===0) {
+        axios.request(config)
+        .then((response) => {
+          console.log(JSON.stringify(response.data));
+          setTeams(response.data.Timovi);
+          setUcitani(1);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      }
+    }, [ucitaniTimovi]);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(3);
@@ -80,7 +104,7 @@ function Events() {
         </div>
         <div className='events'>
           {currentEvent.map((event) => {
-            return <Event data = {event} key = {event.dogadjajID} inPrijave = {0}   />
+            return <Event data = {event} key = {event.dogadjajID} inPrijave = {0} teams = {teams}  />
           })}
         </div>
         {events!=null && (
