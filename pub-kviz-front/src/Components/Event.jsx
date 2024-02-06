@@ -48,14 +48,18 @@ function Event({data, inPrijave, teams}) {
   
           <div className='btns'>
               
-  
-              <div className='btnsSub'>
+            {teams.length>0 ?(
+                <>
+                <div className='btnsSub'>
               <div >
                 <select value={selectedTeam} onChange={handleTeamChange} style={{
-                padding: '8px',
                 backgroundColor: '#FFBD33',
                 borderRadius: '5px',
-                width: '200px',  
+                width: '175px',
+                height:'40px',
+                marginRight:'15px',
+                padding: 0.3 + 'em',
+                margin: 0.2 + 'em'
                 }}>
                 
                 {teams.map((team, index) => (
@@ -68,6 +72,15 @@ function Event({data, inPrijave, teams}) {
                     <p>Prijavi tim</p>
                 </button>
           </div>
+                
+                </>):(
+                    <>
+                    
+                    
+                    </>
+                )
+            }
+              
         </div>
   
           </>

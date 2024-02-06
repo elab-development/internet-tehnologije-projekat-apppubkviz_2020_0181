@@ -33,7 +33,7 @@ function Events() {
     };
 
     useEffect(() => {
-      if (ucitaniTimovi===0) {
+      if (ucitaniTimovi===0 && window.sessionStorage.getItem("auth_token")!=null) {
         axios.request(config)
         .then((response) => {
           console.log(JSON.stringify(response.data));
