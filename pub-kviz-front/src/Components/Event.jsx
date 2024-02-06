@@ -15,14 +15,14 @@ function Event({data, inPrijave, refresh, remove}) {
             
 
               <div className='dataSubcontainer'>
-                  <h1>{data.title}</h1>
-                  <p className='tagline'>{data.tagline}</p>
-                  <p><span style={{fontWeight: 'bold'}}>Datum održavanja</span>: {data.date}</p>
-                  <p><span style={{fontWeight: 'bold'}}>Vreme održavanja</span>: {data.time}</p>
-                  <p><span style={{fontWeight: 'bold'}}>Mesto održavanja</span>: {data.location}</p>
+                  <h1>{data.naziv}</h1>
+                  <p className='tagline'>{data.kratakOpis}</p>
+                  <p><span style={{fontWeight: 'bold'}}>Datum održavanja</span>: {data.datumOdrzavanja}</p>
+                  <p><span style={{fontWeight: 'bold'}}>Vreme održavanja</span>: {data.vremeOdrzavanja}</p>
+                  <p><span style={{fontWeight: 'bold'}}>Mesto održavanja</span>: {data.mesto}</p>
               </div>
            </div>
-           <p>{data.description}</p>
+           <p>{data.opis}</p>
   
           <div className='btns'>
               

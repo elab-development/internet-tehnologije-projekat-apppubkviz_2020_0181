@@ -2,12 +2,36 @@ import React from 'react'
 import Event from './Event';
 import Pagination from './Pagination';
 import { useState } from 'react';
-function Events({events, refresh,filtriraj,vratiSve}) {
+import { useEffect } from 'react';
+import axios from 'axios';
+
+function Events() {
+  const[events,setEvents]=useState([]);
+  const[ucitani,setUcitani]=useState(0);
+
+  useEffect(() => {
+    if (ucitani===0) {
+      axios.get("http://127.0.0.1:8000/api/events").then((res) => {
+        console.log(res.data);
+        setEvents(res.data.Dogadjaji);
+        setUcitani(1);
+      });
+    }
+  }, [ucitani]);
+
+
+
+
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(2);
+    const [postsPerPage] = useState(3);
     const lastPostIndex = currentPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
-    const currentEvent = events.slice(firstPostIndex, lastPostIndex);
+    let currentEvent = []; // Deklaracija van if bloka
+    if(events!=null){
+      currentEvent = events.slice(firstPostIndex, lastPostIndex);
+    }
+    
+
     const [selectedMonth, setSelectedMonth] = useState('');
 
     const handleMonthChange = (event) => {
@@ -16,13 +40,23 @@ function Events({events, refresh,filtriraj,vratiSve}) {
     if (selectedMonthValue === '') {
         setSelectedMonth(selectedMonthValue);
         console.log('Izaberite mesec');
-        vratiSve();
+        axios.get("http://127.0.0.1:8000/api/events").then((res) => {
+          console.log(res.data);
+          setEvents(res.data.Dogadjaji);
+        });
+        
     } else {  
       setSelectedMonth(selectedMonthValue);
       const selectedMonthNumber = parseInt(selectedMonthValue, 10) ;
-      filtriraj(selectedMonthNumber);    
+      axios.get("http://127.0.0.1:8000/api/events/2009/"+selectedMonthNumber).then((res) => {
+          console.log(res.data);
+          setEvents(res.data.events);
+          
+        });
+         
     } 
   };
+
     const months = [
       'Januar', 'Februar', 'Mart', 'April', 'Maj', 'Jun',
       'Jul', 'Avgust', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'
@@ -46,10 +80,14 @@ function Events({events, refresh,filtriraj,vratiSve}) {
         </div>
         <div className='events'>
           {currentEvent.map((event) => {
-            return <Event data = {event} key = {event.id} inPrijave = {0}  refresh = {refresh} />
+            return <Event data = {event} key = {event.dogadjajID} inPrijave = {0}   />
           })}
         </div>
-        <Pagination totalPosts = {events.length} postsPerPage = {postsPerPage} setCurrentPage = {setCurrentPage} currentPage = {currentPage}/>
+        {events!=null && (
+          <Pagination  totalPosts={events.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage}
+    />
+  )}
+        
       </div>
     );
   };
