@@ -2,6 +2,7 @@
 import NavBar from './Components/NavBar';
 import Login from './Components/Login';
 import Register from './Components/Register';
+import Teams from './Components/Teams';
 import './App.css';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import  Events from './Components/Events';
@@ -15,9 +16,6 @@ import axios from 'axios';
 
 function App() {
   const [events,setEvents] = useState();
-
-  
-  
 
   const [joinedEvents,setJoinedEvents] = useState([]);
   const [eventNum, setEventNum] = useState(0);
@@ -40,39 +38,16 @@ function App() {
    
   }
 
-  function removeEvent(id) {
-    const updatedEvents = joinedEvents.filter((event) => event.id !== id);
-    setJoinedEvents(updatedEvents);
-    setEventNum(eventNum-1);
-  }
-
-  function removeAllEvent(){
-    setJoinedEvents([]);
-    setEventNum(0);
-  }
-
   const [email,setEmail] = useState([]);
   const[token,setToken]=useState();
 
   function postaviUlogovanog(email,token){
     setEmail(email);
     setToken(token);
-
+    window.sessionStorage.setItem("auth_token",token);
+    window.sessionStorage.setItem("email",email);
   }
-  const [filtriraniDogadjaji,setFiltriraniDogadjaji] = useState(events);
   
-  function filtriraj(izabraniMesec){
-    const filtrirani = events.filter((event) => {
-      const mesecOdrzavanja = event.date.split('.')[1];
-      return mesecOdrzavanja === izabraniMesec.toString();
-    });
-    
-    setFiltriraniDogadjaji(filtrirani);
-
-  }
-  function vratiSve(){
-    setFiltriraniDogadjaji(events);
-  }
   return (
     <div className='App'>
       <BrowserRouter>
@@ -89,13 +64,16 @@ function App() {
          
         />
         <Route
-          path = '/events' element = {<JoinedEvents events = {joinedEvents} eventNum = {eventNum} remove={removeEvent} removeAll={removeAllEvent} filtriraj={filtriraj} />}
+          path = '/events' element = {<JoinedEvents events = {joinedEvents}  />}
         />
         <Route
           path = '/login' element = {<Login uloguj={postaviUlogovanog} />}
         />
         <Route
           path = '/register' element = {<Register />}
+        />
+        <Route
+          path = '/teams' element = {<Teams  />}
         />
       </Routes>
       </BrowserRouter>
