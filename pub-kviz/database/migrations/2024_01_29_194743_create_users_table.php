@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('brojTelefona')->nullable(false);
             $table->string('email')->nullable(false);
             $table->string('password')->nullable(false);
+            $table->string('uloga')->nullable(false);
+
             $table->rememberToken();          
             $table->timestamps(false);
             

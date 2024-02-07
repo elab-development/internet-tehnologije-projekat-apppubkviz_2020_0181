@@ -17,7 +17,8 @@ class AuthController extends Controller
             'password'=>'required|string|min:8',
             'telefon'=>'required|string|regex:/^[0-9]+$/',
             'ime'=>'required|string|max:20',
-            'prezime'=>'required|string|max:20'
+            'prezime'=>'required|string|max:20',
+            'uloga'=>'required|string|max:20'
         ]);
 
 
@@ -29,7 +30,8 @@ class AuthController extends Controller
             'prezime'=>$request->prezime,
             'telefon'=>$request->telefon,
             'email'=>$request->email,
-            'password'=>Hash::make($request->password)
+            'password'=>Hash::make($request->password),
+            'uloga'=>$request->uloga
 
         ]);
 

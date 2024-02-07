@@ -27,6 +27,7 @@ class UserFactory extends Factory
             'telefon' => $this->faker->phoneNumber,
             'email' => fake()->unique()->safeEmail(),
             'password' => bcrypt('password'), 
+            'uloga'=>"obican",
             'remember_token' => Str::random(10),          
         ];
     }
