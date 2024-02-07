@@ -9,7 +9,7 @@ function Event({ data, inPrijave, teams, setUcitaniDogadjaji }) {
   const [selectedTeam, setSelectedTeam] = useState("");
 
   let data1 = new FormData();
-
+  const datumOdrzavanja = new Date(data.datumOdrzavanja);
   let config = {
     method: "post",
     url: "http://127.0.0.1:8000/api/add_team_event",
@@ -114,7 +114,7 @@ function Event({ data, inPrijave, teams, setUcitaniDogadjaji }) {
           <p>{data.opis}</p>
 
           <div className="btns">
-            {data.datumOdrzavanja > new Date() ? (
+            {datumOdrzavanja > new Date() ? (
               <>
                 {window.sessionStorage.getItem("auth_token") != null ? (
                   <>
