@@ -52,5 +52,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 
     Route::resource('add_team_event', TeamEventController::class)->only(['store']);
     Route::delete('delete_team_event/{team_Event}', [TeamEventController::class, 'destroy']);
+    Route::get('/team_event_admin/{eventID}', [TeamEventController::class, 'prikaziPrijavljeneTimove']);
+    Route::put('update_results/{id}', [TeamEventController::class, 'update']);
     
 });

@@ -86,13 +86,32 @@ class TeamEventController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TeamEvent $team_Event)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        
+        $teamEvent = TeamEvent::find($id);
+
+        if (!$teamEvent) {
+            return response()->json(['message' => 'Team event not found.'], 404);     
+        }
+
+        $validator = Validator::make($request->all(), [         
+            'brojPoena' => 'required|integer'  
+        ]);
+
+        if ($validator->fails()) {         
+            return response()->json($validator->errors(), 400);
+        }
+
+        $teamEvent->brojPoena = $request->brojPoena;
+        $teamEvent->save();  
+
+        return response()->json(['message' => 'Results have been updated successfully.', 'teamEvent' => $teamEvent]);
+    }   
+    
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage.  
      */
     public function destroy(TeamEvent $team_Event)
     {
@@ -125,6 +144,38 @@ class TeamEventController extends Controller
             $html .= '<tr>';
             $html .= '<td style="padding-right: 10px;">' . $team->team->nazivTima . '</td>';
             $html .= '<td>' . $team->brojPoena . '</td>';
+            $html .= '</tr>';
+        }
+        $html .= '</tbody></table>';
+        
+        return $html;
+    }
+
+
+    public function prikaziPrijavljeneTimove($eventID)
+    {
+        
+        $teams = TeamEvent::with(['team', 'event'])
+            ->where('IDDogadjaj', $eventID)
+            ->get();
+
+        
+        $pdf = PDF::loadHTML($this->formatirajPDFAdmin($teams));
+    
+        return $pdf->stream('results.pdf');
+    }
+
+
+    private function formatirajPDFAdmin($teams)
+    {
+        $html = '<h1>Prijavljeni timovi</h1>';
+        $html .= '<table style="border-collapse: collapse; width: 20%;">';
+        $html .= '<thead><tr><th>Tim</th><th>ID</th></tr></thead>';
+        $html .= '<tbody>';
+        foreach ($teams as $team) {
+            $html .= '<tr>';
+            $html .= '<td style="padding-right: 10px;">' . $team->team->nazivTima . '</td>';
+            $html .= '<td>' . $team->timDogadjajID . '</td>';
             $html .= '</tr>';
         }
         $html .= '</tbody></table>';
