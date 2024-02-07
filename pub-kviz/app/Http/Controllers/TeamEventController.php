@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\TeamEvent;
+use App\Models\Team;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\TeamEventResource;
 use App\Http\Resources\TeamEventCollection;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 class TeamEventController extends Controller
 {
@@ -40,6 +43,14 @@ class TeamEventController extends Controller
  
         if($validator -> fails())
             return response()->json($validator->errors());
+        
+        $existingTeamEvent = TeamEvent::where('IDDogadjaj', $request->IDDogadjaj)
+                                        ->where('IDtim', $request->IDTim)
+                                        ->exists();
+        
+        if ($existingTeamEvent) {
+            return response()->json(['error' => 'Tim je već prijavljen na ovaj događaj.'],400);
+        }
            
         $teamevent = TeamEvent::create([
             'IDDogadjaj' => $request->IDDogadjaj,
@@ -119,5 +130,13 @@ class TeamEventController extends Controller
         $html .= '</tbody></table>';
         
         return $html;
+    }
+
+    public function vratiDogadjajeKorisnika()
+    {
+
+        $userTeams = Auth::user()->team()->pluck('timID');
+        $userTeamEvents = TeamEvent::whereIn('IDTim', $userTeams)->get();
+        return new TeamEventCollection($userTeamEvents);
     }
 }

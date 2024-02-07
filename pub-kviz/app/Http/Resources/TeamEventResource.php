@@ -22,9 +22,11 @@ class TeamEventResource extends JsonResource
         
         return [
             'timDogadjajID' => $this->resource->timDogadjajID,
-            'nazivDogadjaj'=> $this->event->naziv,
+            'nazivDogadjaja'=> $this->event->naziv,
             'nazivTima' => $this->team->nazivTima,
             'brojPoena' => $this->resource->brojPoena,
+            'datum'=>$this->event->datumOdrzavanja,
+            'vreme'=>$this->event->vremeOdrzavanja,
         ];
     }
 }
