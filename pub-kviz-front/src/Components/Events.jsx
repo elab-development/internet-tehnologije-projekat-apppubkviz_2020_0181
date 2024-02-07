@@ -149,7 +149,7 @@ function Events() {
         {window.sessionStorage.getItem("uloga") != null &&
         window.sessionStorage.getItem("uloga") === "admin" ? (
           <>
-            <div className="btns1">
+            <div className="btns1a">
               <div className="btnsSub1">
                 <div style={{ paddingRight: 20 }}>
                   <input
@@ -169,7 +169,7 @@ function Events() {
                     onChange={(e) => setBrojPoena(e.target.value)}
                   />
                 </div>
-                <button className={"btn1"} onClick={() => update()}>
+                <button className={"btn1a"} onClick={() => update()}>
                   <p>Azuriraj rezultat</p>
                 </button>
               </div>

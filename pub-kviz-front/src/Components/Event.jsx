@@ -103,8 +103,6 @@ function Event({ data, inPrijave, teams, setUcitaniDogadjaji }) {
       });
   }
 
-  function azurirajRezultate() {}
-
   return (
     <div className={inPrijave === 0 ? "event" : "eventb"}>
       {inPrijave === 0 ? (
@@ -203,6 +201,7 @@ function Event({ data, inPrijave, teams, setUcitaniDogadjaji }) {
                     <button
                       className={"btn1"}
                       onClick={prikaziPrijavljeneTimove}
+                      style={{ marginLeft: 1 + "em" }}
                     >
                       <p>Prikazi timove</p>
                     </button>
