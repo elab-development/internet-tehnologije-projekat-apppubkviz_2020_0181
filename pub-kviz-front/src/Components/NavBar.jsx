@@ -44,15 +44,15 @@ function NavBar({uloguj}) {
           <Link to = '/' className='link'>
               < TbBrain className='icon'/>
           </Link>
-          <Link to = '/events' className='link'>
-              <MdEventAvailable className='icon'/>
-          </Link>
           {window.sessionStorage.getItem("auth_token") == null ? (
             <Link to='/login' className='link'>
               <IoPersonCircleOutline className='icon' />
             </Link>
           ) : ( 
             <>
+            <Link to = '/events' className='link'>
+              <MdEventAvailable className='icon'/>
+            </Link>
             <Link to='/teams' className='link'>
               <MdGroups className='icon' />
             </Link>   

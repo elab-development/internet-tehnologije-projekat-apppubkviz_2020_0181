@@ -2,29 +2,76 @@ import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { useState } from "react";
 import slika1 from "../slike/event.jpg";
+import slika2 from "../slike/check.jpg";
 import { Link } from "react-router-dom";
-function Event({ data, inPrijave, teams }) {
+import axios from "axios";
+function Event({ data, inPrijave, teams,setUcitaniDogadjaji }) {
   const [selectedTeam, setSelectedTeam] = useState("");
+ 
+
+  let data1 = new FormData();
+    
+ 
+  let config = {
+    method: 'post',
+    url: 'http://127.0.0.1:8000/api/add_team_event',
+    headers: {
+    'Authorization': 'Bearer '+window.sessionStorage.getItem("auth_token"),
+    
+  },
+  data : data1
+  };
+  
 
   const handleTeamChange = (team) => {
-    const selectedTeamValue = team.target.value;
-
-    if (selectedTeamValue === "") {
-      setSelectedTeam(selectedTeamValue);
-      console.log("Izaberite tim");
-      // axios.get("http://127.0.0.1:8000/api/events").then((res) => {
-      //   console.log(res.data);
-      //   setEvents(res.data.Dogadjaji);
-      // });
-    } else {
-      setSelectedTeam(selectedTeamValue);
-      //   axios.get("http://127.0.0.1:8000/api/events/2009/"+selectedMonthNumber).then((res) => {
-      //       console.log(res.data);
-      //       setEvents(res.data.events);
-
-      //     });
-    }
+    const selectedTeamValue = team.target.value; 
+    setSelectedTeam(selectedTeamValue);
   };
+
+  function prijavaTima(){
+    const selectedTeamValue = document.querySelector('.btnsSub select').value;
+    console.log("Selektovani tim:", selectedTeamValue);
+    const selectedTeam = teams.find(team => team.nazivTima === selectedTeamValue);
+    data1.append('IDTim',selectedTeam.timID);
+    data1.append('IDDogadjaj',data.dogadjajID);
+    data1.append('brojPoena',0);
+    axios.request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+
+      })
+      .catch((error) => {
+          console.log(error);
+          alert("Greska: već ste prijavljeni na dati dogadjaj");
+        
+        
+      });
+
+
+  }
+  let config1 = {
+    method: 'delete',
+    url: 'http://127.0.0.1:8000/api/delete_team_event/'+data.timDogadjajID,
+    headers: {
+    'Authorization': 'Bearer '+window.sessionStorage.getItem("auth_token"),
+    
+  }};
+
+  function obrisiPrijavljenDogadjaj(){
+    axios.request(config1)
+    .then((response) => {
+      console.log(JSON.stringify(response.data));
+      setUcitaniDogadjaji(0);
+
+    })
+    .catch((error) => {
+        console.log(error);
+        alert("Greska");
+      
+      
+    });
+
+  }
 
   return (
     <div className={inPrijave === 0 ? "event" : "eventb"}>
@@ -80,7 +127,7 @@ function Event({ data, inPrijave, teams }) {
                       ))}
                     </select>
                   </div>
-                  <button className={"btn1"}>
+                  <button className={"btn1"} onClick={prijavaTima}>
                     <p>Prijavi tim</p>
                   </button>
                 </div>
@@ -110,27 +157,25 @@ function Event({ data, inPrijave, teams }) {
       ) : (
         <>
           <div className="dataContainer">
-            <div className="imageContainer">
-              <img src={data.image.jpg} alt="Slika" />
+            <div className="imageContainer1">
+              <img  src={slika2} alt="Slika" />
             </div>
 
             <div className="dataSubcontainerb">
-              <h1 style={{ marginLeft: 0.72 + "em" }}>{data.title}</h1>
-              <p className="datab">{data.location}</p>
+              <h1 style={{ marginLeft: 0.72 + "em" }}>{data.nazivDogadjaja}</h1>
+              <p className="datab">{data.nazivTima}</p>
               <p className="datab">
-                {data.date} • {data.time}
+                {data.datum} • {data.vreme}
               </p>
 
-              <p className="team" style={{ marginLeft: 1.1 + "em" }}>
-                Tim: {data.teamName}, Broj članova: {data.teamMembers}
-              </p>
+              
             </div>
           </div>
 
           <div className="btns">
             <div className="btnsSub">
               <button className="trash">
-                <FaTrashAlt className="btnb" />
+                <FaTrashAlt className="btnb" onClick={obrisiPrijavljenDogadjaj} />
               </button>
             </div>
           </div>

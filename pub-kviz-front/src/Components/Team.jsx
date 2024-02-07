@@ -2,7 +2,7 @@ import React from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { useState } from 'react';
 import axios from 'axios';
-
+import slika1 from "../slike/tim.jpg";
 function Team({data,setUcitani}) { 
     
 
@@ -34,7 +34,7 @@ function Team({data,setUcitani}) {
           <>
           <div className='dataContainer'>
                 <div className='imageContainer'>
-                    
+                  <img src={slika1} alt="Slika" />
                 </div>
   
               <div className='dataSubcontainerb'>
