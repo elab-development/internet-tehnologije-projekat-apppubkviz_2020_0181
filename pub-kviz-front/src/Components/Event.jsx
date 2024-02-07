@@ -64,11 +64,6 @@ function Event({ data, inPrijave, teams, setUcitaniDogadjaji }) {
       });
   }
 
-  // let config2 = {
-  //   method: "get",
-  //   url: "http://127.0.0.1:8000/api/team_event/results/" + data.dogadjajID,
-  // };
-
   function preuzmiRezultate() {
     axios
       .get("http://127.0.0.1:8000/api/team_event/results/" + data.dogadjajID, {
@@ -84,6 +79,31 @@ function Event({ data, inPrijave, teams, setUcitaniDogadjaji }) {
         alert("Greška prilikom preuzimanja PDF-a");
       });
   }
+
+  let config2 = {
+    method: "get",
+    url: "http://127.0.0.1:8000/api/team_event_admin/" + data.dogadjajID,
+    headers: {
+      Authorization: "Bearer " + window.sessionStorage.getItem("auth_token"),
+    },
+    responseType: "arraybuffer",
+  };
+
+  function prikaziPrijavljeneTimove() {
+    axios
+      .request(config2)
+      .then((response) => {
+        const blob = new Blob([response.data], { type: "application/pdf" });
+        const url = URL.createObjectURL(blob);
+        window.open(url, "_blank");
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Greška prilikom preuzimanja PDF-a");
+      });
+  }
+
+  function azurirajRezultate() {}
 
   return (
     <div className={inPrijave === 0 ? "event" : "eventb"}>
@@ -177,6 +197,19 @@ function Event({ data, inPrijave, teams, setUcitaniDogadjaji }) {
                 <button className={"btn1"} onClick={preuzmiRezultate}>
                   <p>Preuzmi rezultate</p>
                 </button>
+                {window.sessionStorage.getItem("uloga") != null &&
+                window.sessionStorage.getItem("uloga") === "admin" ? (
+                  <>
+                    <button
+                      className={"btn1"}
+                      onClick={prikaziPrijavljeneTimove}
+                    >
+                      <p>Prikazi timove</p>
+                    </button>
+                  </>
+                ) : (
+                  <></>
+                )}
               </>
             )}
           </div>
