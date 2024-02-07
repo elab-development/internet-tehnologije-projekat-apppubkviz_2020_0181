@@ -1,120 +1,143 @@
-import React from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
-import { useState } from 'react';
+import React from "react";
+import { FaTrashAlt } from "react-icons/fa";
+import { useState } from "react";
+import slika1 from "../slike/event.jpg";
+import { Link } from "react-router-dom";
+function Event({ data, inPrijave, teams }) {
+  const [selectedTeam, setSelectedTeam] = useState("");
 
-function Event({data, inPrijave, teams}) {  
-
-    const [selectedTeam, setSelectedTeam] = useState('');
-
-    const handleTeamChange = (team) => {
+  const handleTeamChange = (team) => {
     const selectedTeamValue = team.target.value;
-    
-    if (selectedTeamValue === '') {
-        setSelectedTeam(selectedTeamValue);
-        console.log('Izaberite tim');
-        // axios.get("http://127.0.0.1:8000/api/events").then((res) => {
-        //   console.log(res.data);
-        //   setEvents(res.data.Dogadjaji);
-        // });        
-    } else {  
+
+    if (selectedTeamValue === "") {
       setSelectedTeam(selectedTeamValue);
-    //   axios.get("http://127.0.0.1:8000/api/events/2009/"+selectedMonthNumber).then((res) => {
-    //       console.log(res.data);
-    //       setEvents(res.data.events);
-          
-    //     });
-         
-    } 
+      console.log("Izaberite tim");
+      // axios.get("http://127.0.0.1:8000/api/events").then((res) => {
+      //   console.log(res.data);
+      //   setEvents(res.data.Dogadjaji);
+      // });
+    } else {
+      setSelectedTeam(selectedTeamValue);
+      //   axios.get("http://127.0.0.1:8000/api/events/2009/"+selectedMonthNumber).then((res) => {
+      //       console.log(res.data);
+      //       setEvents(res.data.events);
 
+      //     });
     }
-
-    return (
-      <div className={inPrijave === 0 ? 'event' : 'eventb'}>
-          {inPrijave === 0 ? (
-          <>
-          
-          <div className='dataContainer'>
-            
-
-              <div className='dataSubcontainer'>
-                  <h1>{data.naziv}</h1>
-                  <p className='tagline'>{data.kratakOpis}</p>
-                  <p><span style={{fontWeight: 'bold'}}>Datum održavanja</span>: {data.datumOdrzavanja}</p>
-                  <p><span style={{fontWeight: 'bold'}}>Vreme održavanja</span>: {data.vremeOdrzavanja}</p>
-                  <p><span style={{fontWeight: 'bold'}}>Mesto održavanja</span>: {data.mesto}</p>
-              </div>
-           </div>
-           <p>{data.opis}</p>
-  
-          <div className='btns'>
-              
-            {teams.length>0 ?(
-                <>
-                <div className='btnsSub'>
-              <div >
-                <select value={selectedTeam} onChange={handleTeamChange} style={{
-                backgroundColor: '#FFBD33',
-                borderRadius: '5px',
-                width: '175px',
-                height:'40px',
-                marginRight:'15px',
-                padding: 0.3 + 'em',
-                margin: 0.2 + 'em'
-                }}>
-                
-                {teams.map((team, index) => (
-                    <option key={index} value={team.nazivTima}>{team.nazivTima}</option>
-                ))}
-                </select>
-
-            </div>              
-                <button className={'btn1'}>
-                    <p>Prijavi tim</p>
-                </button>
-          </div>
-                
-                </>):(
-                    <>
-                    
-                    
-                    </>
-                )
-            }
-              
-        </div>
-  
-          </>
-          ) : (
-          <>
-          <div className='dataContainer'>
-                <div className='imageContainer'>
-                    <img src={data.image.jpg} alt='Slika'/>
-                </div>
-  
-              <div className='dataSubcontainerb'>
-                  <h1 style={{marginLeft: 0.72 + "em"}}>{data.title}</h1>
-                  <p className='datab'>{data.location}</p>
-                  <p className='datab'>{data.date} • {data.time}</p>
-                  
-                  <p className='team' style={{marginLeft: 1.1 + "em"}}>Tim: {data.teamName}, Broj članova: {data.teamMembers}</p>
-                      
-              
-              </div>
-           </div>
-
-          <div className='btns'>
-              <div className='btnsSub'>
-              <button className='trash'>
-                  <FaTrashAlt className='btnb'/>
-              </button>
-          </div>    
-          </div>
-  
-          </>
-          )}
-      </div>
-    );
   };
 
-  
-  export default Event;
+  return (
+    <div className={inPrijave === 0 ? "event" : "eventb"}>
+      {inPrijave === 0 ? (
+        <>
+          <div className="dataContainer">
+            <div className="imageContainer">
+              <img src={slika1} alt="Slika" />
+            </div>
+
+            <div className="dataSubcontainer">
+              <h1>{data.naziv}</h1>
+              <p className="tagline">{data.kratakOpis}</p>
+              <p>
+                <span style={{ fontWeight: "bold" }}>Datum održavanja</span>:{" "}
+                {data.datumOdrzavanja}
+              </p>
+              <p>
+                <span style={{ fontWeight: "bold" }}>Vreme održavanja</span>:{" "}
+                {data.vremeOdrzavanja}
+              </p>
+              <p>
+                <span style={{ fontWeight: "bold" }}>Mesto održavanja</span>:{" "}
+                {data.mesto}
+              </p>
+            </div>
+          </div>
+          <p>{data.opis}</p>
+
+          <div className="btns">
+            {window.sessionStorage.getItem("auth_token") != null ?(<>
+                {teams.length > 0 ? (
+              <>
+                <div className="btnsSub">
+                  <div>
+                    <select
+                      value={selectedTeam}
+                      onChange={handleTeamChange}
+                      style={{
+                        backgroundColor: "#FFBD33",
+                        borderRadius: "5px",
+                        width: "175px",
+                        height: "40px",
+                        marginRight: "15px",
+                        padding: 0.3 + "em",
+                        margin: 0.2 + "em",
+                      }}
+                    >
+                      {teams.map((team, index) => (
+                        <option key={index} value={team.nazivTima}>
+                          {team.nazivTima}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <button className={"btn1"}>
+                    <p>Prijavi tim</p>
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/teams"
+                  className={"btn1"}
+                  style={{ width: "200px", height: "30px" }}
+                >
+                  <p>Kreiraj tim za prijavu</p>
+                </Link>
+              </>
+            )}
+            
+            </>):(<>
+                <p>
+                <span className="spanStyle">Da biste se prijavili za događaj</span>{' '}
+                <Link to="/login" className="spanStyle1">ulogujte se.</Link>
+            </p>
+            
+            </>)}
+            
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="dataContainer">
+            <div className="imageContainer">
+              <img src={data.image.jpg} alt="Slika" />
+            </div>
+
+            <div className="dataSubcontainerb">
+              <h1 style={{ marginLeft: 0.72 + "em" }}>{data.title}</h1>
+              <p className="datab">{data.location}</p>
+              <p className="datab">
+                {data.date} • {data.time}
+              </p>
+
+              <p className="team" style={{ marginLeft: 1.1 + "em" }}>
+                Tim: {data.teamName}, Broj članova: {data.teamMembers}
+              </p>
+            </div>
+          </div>
+
+          <div className="btns">
+            <div className="btnsSub">
+              <button className="trash">
+                <FaTrashAlt className="btnb" />
+              </button>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+export default Event;

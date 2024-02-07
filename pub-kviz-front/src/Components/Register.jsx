@@ -10,6 +10,7 @@ const Register= () => {
     telefon: '',
     email: '',
     password: '',
+    uloga:'obican',
   });
   const navigate = useNavigate();
 

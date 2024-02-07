@@ -25,6 +25,7 @@ function NavBar({uloguj}) {
       uloguj(null, null);
       window.sessionStorage.removeItem("auth_token");
       window.sessionStorage.removeItem("email");
+      window.sessionStorage.removeItem("uloga");
     })
     .catch((error) => {
       console.log(error);

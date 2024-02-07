@@ -78,7 +78,7 @@ function Teams() {
   return (
     <div className='frame'>
       <div className='btns1'>
-              <div className='btnsSub'>
+              <div className='btnsSub1'>
                 <div style={{paddingRight:20}}>
                 <input style={{ height: 1+"em"}}
                     type='text'

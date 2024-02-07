@@ -195,23 +195,22 @@
 }
 
 .imageContainer {
-  height: 10em;
-  width: 6.68em;
+  height: 8em;
+  width: 8em;
   border-radius: 0.5em;
-  border-color: #FFBD33;
-  border-width: 0.2em;
-  border-style: solid;
-  background-color: #FFBD33;
+  box-shadow: 0 0 0.5em #FFBD33;
   align-items: center;
   justify-content: center;
+  align-self: center;
 }
-
-
+ 
+ 
 .imageContainer img {
   display: block;
-  height: 10em;
-  width: 6.65em;
+  height: 8em;
+  width: 8em;
   border-radius: 0.3em;
+
 }
 
 .dataContainer {
@@ -261,8 +260,12 @@
   margin-top: 7em;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   border-radius: 8px;
+  width: 600px;
+  height: 100px;
+
+  
   
   
 }
@@ -506,4 +509,28 @@ form.registration-form {
 
 .password-strength.strong {
   color: green;
+}
+
+.imageContainer.icon {
+  transform: scale(50);
+}
+
+.spanStyle {
+  color:black;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-right:8px; 
+}
+
+.spanStyle1 {
+  color:#FFBD33;
+  font-weight: bold;
+  font-size: 1.1em;
+  text-decoration:none; 
+}
+
+.btnsSub1 {
+  display: flex;
+  flex-direction: row;
+
 }

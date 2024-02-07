@@ -41,11 +41,12 @@ function App() {
   const [email,setEmail] = useState([]);
   const[token,setToken]=useState();
 
-  function postaviUlogovanog(email,token){
+  function postaviUlogovanog(email,token,uloga){
     setEmail(email);
     setToken(token);
     window.sessionStorage.setItem("auth_token",token);
     window.sessionStorage.setItem("email",email);
+    window.sessionStorage.setItem("uloga",uloga);
   }
   
   return (
