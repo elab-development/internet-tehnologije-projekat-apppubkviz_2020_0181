@@ -570,3 +570,85 @@ form.registration-form {
   display: flex;
   flex-direction: row;
 }
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.quiz-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.quiz-question {
+  border: 1px solid #ccc;
+  box-shadow: 0 0 0.5em #FFBD33;
+  margin: 3em 0;
+  padding: 15px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.question-header button {
+  background-color: #FFBD33;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+label.pitanje {
+  display: flex;
+  align-items: center;
+  margin-right: 30em;
+}
+
+input.pitanje[type="checkbox"] {
+  margin-right: -10em; /* Dodajte ovu liniju za mali razmak između checkboxa i teksta */
+  margin-bottom: 1em;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #9eec9e;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 30%; /* Prilagodite širinu prema potrebama */
+}
+
+.close-btn {
+  position: absolute;
+  top: 5em;
+  right: -2px;
+  background-color: #fdcd5e;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+.naslovKviz{
+
+padding-top: 2.5em;
+
+}

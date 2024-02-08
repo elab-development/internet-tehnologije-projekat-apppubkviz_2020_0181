@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 
 import JoinedEvents from './Components/JoinedEvents';
 import axios from 'axios';
+import Questions from './Components/Questions';
 
 function App() {
   const [events,setEvents] = useState();
@@ -75,6 +76,9 @@ function App() {
         />
         <Route
           path = '/teams' element = {<Teams  />}
+        />
+        <Route
+          path = '/questions' element = {<Questions  />}
         />
       </Routes>
       </BrowserRouter>
