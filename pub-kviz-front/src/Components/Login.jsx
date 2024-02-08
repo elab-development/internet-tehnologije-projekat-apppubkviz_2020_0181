@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import DOMPurify from 'dompurify'; 
 
 const Login = ({uloguj}) => {
   const [userData,setUserData]=useState(
@@ -16,7 +17,7 @@ const Login = ({uloguj}) => {
     const { name, value } = e.target;
     setUserData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: DOMPurify.sanitize(value),
     }));
   
   }
