@@ -33,9 +33,7 @@ Route::get('teams_events/{id}', [TeamEventController::class, 'show']);
 
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
-
 Route::get('/events/{year}/{month}', [EventController::class,'vratiDogadjajePoMesecuIGodini']);
-
 Route::get('/team_event/results/{eventID}', [TeamEventController::class, 'prikaziRezultateDogadjaja']);
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
@@ -44,12 +42,9 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     });
  
     Route::post('logout',[AuthController::class, 'logout']);
-
     Route::resource('teams', TeamController::class)->only(['store','update','destroy']);
-    Route::get('vratiTimoveKorisnika', [TeamController::class,'vratiTimoveKorisnika']);
-    
+    Route::get('vratiTimoveKorisnika', [TeamController::class,'vratiTimoveKorisnika']); 
     Route::get('vratiDogadjajeKorisnika', [TeamEventController::class,'vratiDogadjajeKorisnika']);
-
     Route::resource('add_team_event', TeamEventController::class)->only(['store']);
     Route::delete('delete_team_event/{team_Event}', [TeamEventController::class, 'destroy']);
     Route::get('/team_event_admin/{eventID}', [TeamEventController::class, 'prikaziPrijavljeneTimove']);
