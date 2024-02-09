@@ -49,10 +49,11 @@ function Events() {
   }, [ucitaniTimovi]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(3);
+  const [postsPerPage] = useState(2);
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
-  let currentEvent = []; // Deklaracija van if bloka
+  let currentEvent = []; 
+  
   if (events != null) {
     currentEvent = events.slice(firstPostIndex, lastPostIndex);
   }
@@ -73,7 +74,7 @@ function Events() {
       setSelectedMonth(selectedMonthValue);
       const selectedMonthNumber = parseInt(selectedMonthValue, 10);
       axios
-        .get("http://127.0.0.1:8000/api/events/2009/" + selectedMonthNumber)
+        .get("http://127.0.0.1:8000/api/events/2024/" + selectedMonthNumber)
         .then((res) => {
           console.log(res.data);
           setEvents(res.data.events);

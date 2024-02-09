@@ -23,7 +23,7 @@ const Register= () => {
       [name]: value,
     }));
 
-    // Provjera snage lozinke i postavljanje odgovarajućeg stanja
+    
     checkPasswordStrength(value);
   };
 
@@ -37,7 +37,7 @@ const Register= () => {
   };
 
   const validateEmail = (email) => {
-    // Jednostavna provjera formata e-mail adrese
+    
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   };
@@ -45,7 +45,7 @@ const Register= () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Dodajte provjeru valjanosti e-mail adrese prije slanja podataka
+    
     if (validateEmail(formData.email)) {
       axios.post("http://127.0.0.1:8000/api/register",formData).then((res)=>{
         console.log(res.data);
@@ -54,7 +54,6 @@ const Register= () => {
         console.log(e);
       })
 
-      // Ovdje možete dodati logiku za slanje podataka na server ili druge postupke registracije
       console.log('Podaci za registraciju:', formData);
     } else {
       alert('Unesite ispravnu e-mail adresu.');

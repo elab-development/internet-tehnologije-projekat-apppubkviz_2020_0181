@@ -22,7 +22,7 @@ const Questions = () => {
   }, []);
 
   const handleCheckboxChange = (questionIndex, optionIndex) => {
-    // Ovdje možete dodati logiku za rukovanje odabranim opcijama
+    
     console.log(
       `Pitanje ${questionIndex + 1}, opcija ${optionIndex + 1} je označena.`
     );
