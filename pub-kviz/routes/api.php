@@ -36,6 +36,10 @@ Route::post('login',[AuthController::class,'login']);
 Route::get('/events/{year}/{month}', [EventController::class,'vratiDogadjajePoMesecuIGodini']);
 Route::get('/team_event/results/{eventID}', [TeamEventController::class, 'prikaziRezultateDogadjaja']);
 
+Route::get('/chart', function () {
+    return view('charts.chart');
+});
+
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/profile', function(Request $request) {
         return auth()->user();
