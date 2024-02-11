@@ -46,17 +46,19 @@ const Register= () => {
     e.preventDefault();
 
     
-    if (validateEmail(formData.email)) {
+    if (validateEmail(formData.email) && formData.password.length>=8) {
       axios.post("http://127.0.0.1:8000/api/register",formData).then((res)=>{
         console.log(res.data);
+        alert("Uspešna registracija.")
         navigate('/login', {});
       }).catch((e)=>{
         console.log(e);
+        
       })
 
-      console.log('Podaci za registraciju:', formData);
+      //console.log('Podaci za registraciju:', formData);
     } else {
-      alert('Unesite ispravnu e-mail adresu.');
+      alert('Unesite ispravnu podatke (sifra mora imati minimum 8 karaktera).');
     }
   };
 

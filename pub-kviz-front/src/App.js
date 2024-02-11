@@ -3,6 +3,7 @@ import NavBar from './Components/NavBar';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Teams from './Components/Teams';
+import AboutUs from './Components/AboutUs';
 import './App.css';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import  Events from './Components/Events';
@@ -79,6 +80,9 @@ function App() {
         />
         <Route
           path = '/questions' element = {<Questions  />}
+        />
+        <Route
+          path = '/about' element = {<AboutUs  />}
         />
       </Routes>
       </BrowserRouter>

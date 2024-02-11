@@ -67,6 +67,7 @@ function Teams() {
       .then((response) => {
         console.log(JSON.stringify(response.data));
         setUcitani(0);
+        alert("Uspešno kreiran tim.");
       })
       .catch((error) => {
         console.log(error);

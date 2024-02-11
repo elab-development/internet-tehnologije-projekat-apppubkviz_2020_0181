@@ -37,10 +37,11 @@ function Event({ data, inPrijave, teams, setUcitaniDogadjaji }) {
       .request(config)
       .then((response) => {
         console.log(JSON.stringify(response.data));
+        alert("Uspešna prijava na dogadjaj.");
       })
       .catch((error) => {
         console.log(error);
-        alert("Greska: već ste prijavljeni na dati dogadjaj");
+        alert("Greska: već ste prijavljeni na dati dogadjaj.");
       });
   }
   let config1 = {
@@ -57,6 +58,7 @@ function Event({ data, inPrijave, teams, setUcitaniDogadjaji }) {
       .then((response) => {
         console.log(JSON.stringify(response.data));
         setUcitaniDogadjaji(0);
+        alert("Uspešno obrisana prijava za dogadjaj.")
       })
       .catch((error) => {
         console.log(error);

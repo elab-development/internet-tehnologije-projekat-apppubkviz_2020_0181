@@ -21,9 +21,11 @@ function Team({data,setUcitani}) {
           .then((response) => {
             console.log(JSON.stringify(response.data));
             setUcitani(0);
+            alert("Uspešno obrisan tim.");
           })
           .catch((error) => {
             console.log(error);
+            alert("Ne možete obrisati tim.");
           });
 
     } 

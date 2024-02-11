@@ -28,6 +28,7 @@ const Login = ({uloguj}) => {
     axios.post("http://127.0.0.1:8000/api/login",userData).then((res)=>{
         console.log(res.data);
         uloguj(userData.email,res.data.access_token,res.data.uloga);
+        alert("Uspešna prijava na sistem.")
         navigate('/', {});
       }).catch((e)=>{
         console.log(e);

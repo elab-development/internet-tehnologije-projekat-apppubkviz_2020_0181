@@ -6,6 +6,7 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 import { IoMdLogOut } from "react-icons/io";
 import { MdGroups } from "react-icons/md";
 import { HiQuestionMarkCircle } from "react-icons/hi2";
+import { IoLocation } from "react-icons/io5";
 import axios from "axios";
 
 function NavBar({ uloguj }) {
@@ -26,6 +27,7 @@ function NavBar({ uloguj }) {
         window.sessionStorage.removeItem("auth_token");
         window.sessionStorage.removeItem("email");
         window.sessionStorage.removeItem("uloga");
+        alert("Uspešno ste se odjavili sa sistema.")
       })
       .catch((error) => {
         console.log(error);
@@ -50,6 +52,9 @@ function NavBar({ uloguj }) {
         </Link>
         <Link to="/questions" className="link">
           <HiQuestionMarkCircle className="icon" />
+        </Link>
+        <Link to="/about" className="link">
+          <IoLocation  className="icon" />
         </Link>
         {window.sessionStorage.getItem("auth_token") == null ? (
           <Link to="/login" className="link">
