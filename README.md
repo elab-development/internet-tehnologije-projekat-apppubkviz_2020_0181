@@ -26,7 +26,7 @@ Uneti redom komande:
 
 # Funkcionalnosti
 
-Za neprijavljene korisnike - prikazivanje svih pub-kvizova, preuzimanje rezultata pub-kvizova koji su se održali, testiranje znanja, prijavljivanje korisnika i registracija korisnika.
+Za neprijavljene korisnike - prikazivanje svih pub-kvizova, preuzimanje rezultata pub-kvizova koji su se održali, testiranje znanja, prikaz lokacije, prijavljivanje korisnika i registracija korisnika.
 
 Za prijavljene korisnike - sve funkcionalnosti neprijavljenih korisnika, odjava korisnika, kreiranje timova korisnika, prikaz timova korisnika, brisanje timova, prijava na pub kviz, prikaz svih prijavljenih pub kvizova i brisanje prijava za odredjeni pub kviz.
 
